@@ -1,5 +1,33 @@
 <?php
+/*
+      Question2Answer (c) Gideon Greenspan
+      Google Plus Badge (c) Amiya Sahu (developer.amiya@outlook.com)
+      
+      http://www.question2answer.org/
 
+      
+      File: qa-plugin/basic-adsense/qa-plugin.php
+      Version: See define()s at top of qa-include/qa-base.php
+      Description: Initiates Adsense widget plugin
+
+
+      This program is free software; you can redistribute it and/or
+      modify it under the terms of the GNU General Public License
+      as published by the Free Software Foundation; either version 2
+      of the License, or (at your option) any later version.
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+
+      More about this license: http://www.question2answer.org/license.php
+*/
+if (!defined('QA_VERSION')) { // don't allow this page to be requested directly from browser
+           header('Location: ../../');
+           exit;
+}
+           
 class q2a_breadcrumbs_widget {
 
 
@@ -21,7 +49,7 @@ class q2a_breadcrumbs_widget {
 
       function navigation() {
             $request = qa_request_parts();
-            if (isset($request) && !empty($request) && is_array($request)) return $request;
+            if ( !empty($request) && is_array($request)) return $request;
       }
 
       function output_widget($region, $place, $themeobject, $template, $request, $qa_content) {
@@ -235,8 +263,6 @@ class q2a_breadcrumbs_widget {
             if(strlen($string) <= $limit) 
                   return $string; 
             else{ 
-                  //preg_match('/^.{1,'.$limit.'}\b/s', $string, $match);
-                  //return $match[0].$pad;
                   $text = $string.' ';
                   $text = substr($text,0,$limit);
                   $text = substr($text,0,strrpos($text,' '));

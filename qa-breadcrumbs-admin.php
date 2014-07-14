@@ -27,9 +27,9 @@
 
 	class q2a_breadcrumbs_admin {
     /*added the options as constants to avoid multiple occurances */
-    const SHOW_HOME       = 'ami_breadcrumb_show_home' ;
-    const TRUNCATE_LENGTH       = 'ami_breadcrumb_trunc_len' ;
-    const SAVE_BUTTON       = 'ami_breadcrumb_save_btn' ;
+	const SHOW_HOME       = 'ami_breadcrumb_show_home' ;
+	const TRUNCATE_LENGTH = 'ami_breadcrumb_trunc_len' ;
+	const SAVE_BUTTON     = 'ami_breadcrumb_save_btn' ;
 
 		function allow_template($template)
 		{
@@ -74,15 +74,15 @@
 		}
     function option_default($option) {
 
-      switch($option) {
-          case self::SHOW_HOME:
-            return 1;
-          case self::TRUNCATE_LENGTH:
-            return 200 ;
-          default : 
-            return null;  
-            
-      }
+	      switch($option) {
+	          case self::SHOW_HOME:
+	            return 1;
+	          case self::TRUNCATE_LENGTH:
+	            return 200 ;
+	          default : 
+	            return null;  
+	      }
+      
     }
 
 }
