@@ -14,7 +14,10 @@
 .breadcrumb > li + li:before {
   padding: 0 5px;
   color: #ccc;
-  content: "/\00a0";
+  font-weight: bolder ;
+   content: "/\00a0"; 
+  /* content: "\f101"; */
+  /*content: "\f0da";*/
 }
 .breadcrumb > .active {
   color: #777;
@@ -23,6 +26,9 @@
   color: #818181;
   font-size: 15px ;
   font-weight: 600;
+}
+.breadcrumb > li > a:hover {
+  text-decoration: none ;
 }
 .breadcrumb > .active > a {
 	color: #999;
