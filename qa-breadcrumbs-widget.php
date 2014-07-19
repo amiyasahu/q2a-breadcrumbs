@@ -121,18 +121,18 @@ class q2a_breadcrumbs_widget {
                   if (count($navs) > 0) {
                         $link = "";
                         $type = $navs[0];
+
                         if (empty($type)) {
                         	return ; //if there is not a single part -- go back from here 
                         }
+
                         $translate_this_arr = array("questions","unanswered","tags","tag" ,"users","user", "categories", "ask",'message',"special", 'blocked', 'activity');
                         $total_navs  = count($navs);
                         $index = 1 ; 
-                        
 
                         if (empty($template) || $template == 'qa') {
                               $type = 'qa' ;
                         }
-
 
                         foreach ($navs as $nav) {
                               
@@ -289,13 +289,13 @@ class q2a_breadcrumbs_widget {
                         break;
                   case 'qa':
                         if ( $index >= 1 ) {
-                              $class = "class='cs-breadcrumbs-categories'";
+                              $class = "class='cs-breadcrumbs-qa'";
                               $icon  = "icon-folder-open";
                         }
                         break;
                   case 'activity':
 				if ($index == 1) {
-                              $class = "class='cs-breadcrumbs-categories'";
+                              $class = "class='cs-breadcrumbs-activity'";
                               $icon  = "icon-folder";
                         }else if ( $index > 1 ) {
                               $class = "class='cs-breadcrumbs-categories'";
@@ -318,16 +318,16 @@ class q2a_breadcrumbs_widget {
                         $icon  = "icon-tags";
                         break;
                   case 'ask':
-                        $class = "class='cs-breadcrumbs-tags'";
+                        $class = "class='cs-breadcrumbs-ask'";
                         $icon  = "icon-heart-o";
                         break;
                   case 'unanswered':
-                        $class = "class='cs-breadcrumbs-tags'";
+                        $class = "class='cs-breadcrumbs-unanswered'";
                         $icon  = "icon-globe";
                         break;
                  case 'questions':
                         if ($index == 1) {
-                              $class = "class='cs-breadcrumbs-tags'";
+                              $class = "class='cs-breadcrumbs-questions'";
                               $icon  = "icon-question-circle";
                         }else if ( $index > 1 ) {
                               $class = "class='cs-breadcrumbs-categories'";
@@ -336,19 +336,19 @@ class q2a_breadcrumbs_widget {
                         break;
 
                   case 'account':
-                        $class = "class='cs-breadcrumbs-tags'";
+                        $class = "class='cs-breadcrumbs-account'";
                         $icon  = "icon-flag-o";
                         break;
                   case 'search':
-                        $class = "class='cs-breadcrumbs-tags'";
+                        $class = "class='cs-breadcrumbs-search'";
                         $icon  = "icon-flag-o";
                         break;
                   case 'favorites':
-                        $class = "class='cs-breadcrumbs-tags'";
+                        $class = "class='cs-breadcrumbs-favorites'";
                         $icon  = "icon-folder";
                         break;
                   case 'not-found':
-                        $class = "class='cs-breadcrumbs-tags'";
+                        $class = "class='cs-breadcrumbs-not-found'";
                         $icon  = "icon-chain";
                         break;
                   case 'users':
@@ -368,11 +368,11 @@ class q2a_breadcrumbs_widget {
 
                               switch ($nav) {
                                     case 'special':
-                                          $class = "class='cs-breadcrumbs-user'";
+                                          $class = "class='cs-breadcrumbs-user-special'";
                                           $icon  = "icon-globe";
                                           break;
                                     case 'blocked':
-                                          $class = "class='cs-breadcrumbs-user'";
+                                          $class = "class='cs-breadcrumbs-user-blocked'";
                                           $icon  = "icon-globe";
                                           break;
                               }
@@ -389,19 +389,19 @@ class q2a_breadcrumbs_widget {
                         }else if ($index == 3){
                               switch ($nav) {
                                     case 'wall':
-                                          $class = "class='cs-breadcrumbs-user'";
+                                          $class = "class='cs-breadcrumbs-user-wall'";
                                           $icon  = "icon-bookmark-o";
                                           break;
                                     case 'answers':
-                                          $class = "class='cs-breadcrumbs-user'";
+                                          $class = "class='cs-breadcrumbs-user-answers'";
                                           $icon  = "icon-comment-o";
                                           break;
                                     case 'questions':
-                                          $class = "class='cs-breadcrumbs-user'";
+                                          $class = "class='cs-breadcrumbs-user-questions'";
                                           $icon  = "icon-question-circle";
                                           break;
                                     case 'activity':
-                                          $class = "class='cs-breadcrumbs-user'";
+                                          $class = "class='cs-breadcrumbs-user-activity'";
                                           $icon  = " icon-flag-checkered";
                                           break;
 
@@ -415,7 +415,7 @@ class q2a_breadcrumbs_widget {
                         break;
                   case 'message':
                         if ($index == 1) {
-                              $class = "class='cs-breadcrumbs-tags'";
+                              $class = "class='cs-breadcrumbs-message'";
                               $icon  = "icon-send";
                         }else if ($index == 2){
                               $class = "class='cs-breadcrumbs-user'";
