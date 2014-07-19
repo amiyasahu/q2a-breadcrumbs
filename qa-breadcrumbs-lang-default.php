@@ -61,4 +61,7 @@ return array(
 			"activity"      => "Recent Activities" ,
 			"settings_saved"  => "Breadcrumbs settings has been saved " ,
 			"searching_for"  => "Searching For : " ,
+			"all_my_updates"  => "All My Updates" ,
+			"my_favorites"  => "My Favorites" ,
+			"my_content"  => "My Content" ,
 	);

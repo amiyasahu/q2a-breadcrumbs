@@ -89,9 +89,9 @@ class q2a_breadcrumbs_widget {
 							$text     = $category_details['title'];
 							$url      = $this->cat_path($backpath);
                                           $data = array(
-								'type' => 'cat',
-								'text' => $text,
-								'url'  => $url,
+                                                'type' => 'cat',
+                                                'text' => $text,
+                                                'url'  => $url,
                                           );
                                           $br .=$this->breadcrumb_part($data);
                                     }
@@ -100,7 +100,7 @@ class q2a_breadcrumbs_widget {
                   }else { //if question is asked with out any categories 
                         $br .=$this->breadcrumb_part(array(
                             'type' => 'questions',
-                            'url' => qa_path_html('questions'),
+                            'url'  => qa_path_html('questions'),
                             'text' => qa_lang('breadcrumbs/questions'),
                         ));
                   }
@@ -113,7 +113,7 @@ class q2a_breadcrumbs_widget {
 
                   $br .=$this->breadcrumb_part(array(
                       'type' => 'questions',
-                      'url' =>  qa_q_path($q_id, $q_title, true) ,
+                      'url'  =>  qa_q_path($q_id, $q_title, true) ,
                       'text' => $this->truncate( $q_title, $trunc_len ),
                   ));
             } else {  //means non questions page 
@@ -151,11 +151,11 @@ class q2a_breadcrumbs_widget {
                               }
 
 					$br   .= $this->breadcrumb_part(array(
-                                     'type' => $type,
-                                     'url'  => $link ,
-                                     'text' => $text,
-                                     'nav' => $nav ,
-                                     'index' => $index ,
+                                     'type'       => $type,
+                                     'url'        => $link ,
+                                     'text'       => $text,
+                                     'nav'        => $nav ,
+                                     'index'      => $index ,
                                      'total_navs' => $total_navs 
                               ));
                               // reset the link for next iteration 
@@ -166,86 +166,118 @@ class q2a_breadcrumbs_widget {
                         switch ($type) {
                               case 'unanswered':
                                     $by = qa_get('by');
-                                    if (!$by) {
+                                    if (empty($by)) {
                                           $br .= $this->breadcrumb_part(array(
-								'type' => 'no-ans',
-								'url'  => qa_path($link),
-                                                'icon' => "icon-globe",
-								'text' => qa_lang('breadcrumbs/no_ans'),
-                                                'index' => $index ,
+                                                'type'       => 'no-ans',
+                                                'url'        => qa_path($link),
+                                                'icon'       => "icon-times",
+                                                'text'       => qa_lang('breadcrumbs/no_ans'),
+                                                'index'      => $index ,
                                                 'total_navs' => ++$total_navs ,
                                           ));
                                     } else if ($by === 'selected') {
                                           $br .= $this->breadcrumb_part(array(
-      							'type' => 'no-selected',
-      							'url'  => qa_path($link) . '?by=selected',
-                                                'icon' => "icon-globe",
-      							'text' => qa_lang('breadcrumbs/no_selected_ans'),
-                                                'index' => $index ,
+                                                'type'       => 'no-selected',
+                                                'url'        => qa_path($link) . '?by=selected',
+                                                'icon'       => "icon-warning",
+                                                'text'       => qa_lang('breadcrumbs/no_selected_ans'),
+                                                'index'      => $index ,
                                                 'total_navs' => ++$total_navs ,
                                           ));
                                     } else if ($by === 'upvotes') {
                                           $br .= $this->breadcrumb_part(array(
-								'type' => 'no-upvots',
-								'url'  => qa_path($link) . '?by=upvotes',
-                                                'icon' => "icon-globe",
-								'text' => qa_lang('breadcrumbs/no_upvoted_ans'),
-                                                'index' => $index ,
+                                                'type'       => 'no-upvots',
+                                                'url'        => qa_path($link) . '?by=upvotes',
+                                                'icon'       => "icon-external-link",
+                                                'text'       => qa_lang('breadcrumbs/no_upvoted_ans'),
+                                                'index'      => $index ,
                                                 'total_navs' => ++$total_navs ,
                                           ));
                                     }
 
                                     break;
+
                               case 'questions':
                                     
                                     $sort = qa_get('sort');
                                     if ( $total_navs == 1 ) {
                                           if (empty($sort)) {
                                                 $br .= $this->breadcrumb_part(array(
-      								'type' => 'q-sort-recent',
-      								'url'  => qa_path($link),
-                                                      'icon' => "icon-globe",
-      								'text' => qa_lang('breadcrumbs/recent_que'),
-                                                      'index' => $index ,
+                                                      'type'       => 'q-sort-recent',
+                                                      'url'        => qa_path($link),
+                                                      'icon'       => " icon-clock-o",
+                                                      'text'       => qa_lang('breadcrumbs/recent_que'),
+                                                      'index'      => $index ,
                                                       'total_navs' => ++$total_navs ,
                                                 ));
                                           } else if ($sort === 'hot') {
                                                 $br .= $this->breadcrumb_part(array(
-      								'type' => 'q-sort-hot',
-      								'url'  => qa_path($link) . '?sort=hot',
-                                                      'icon' => "icon-globe",
-      								'text' => qa_lang('breadcrumbs/hot'),
-                                                      'index' => $index ,
+                                                      'type'       => 'q-sort-hot',
+                                                      'url'        => qa_path($link) . '?sort=hot',
+                                                      'icon'       => "icon-fire",
+                                                      'text'       => qa_lang('breadcrumbs/hot'),
+                                                      'index'      => $index ,
                                                       'total_navs' => ++$total_navs ,
                                                 ));
                                           } else if ($sort === 'votes') {
                                                 $br .= $this->breadcrumb_part(array(
-      								'type' => 'q-sort-votes',
-      								'url'  => qa_path($link) . '?sort=votes',
-                                                      'icon' => "icon-globe",
-      								'text' => qa_lang('breadcrumbs/most_votes'),
-                                                      'index' => $index ,
+                                                      'type'       => 'q-sort-votes',
+                                                      'url'        => qa_path($link) . '?sort=votes',
+                                                      'icon'       => "icon-thumbs-up",
+                                                      'text'       => qa_lang('breadcrumbs/most_votes'),
+                                                      'index'      => $index ,
                                                       'total_navs' => ++$total_navs ,
                                                 ));
                                           } else if ($sort === 'answers') {
                                                 $br .= $this->breadcrumb_part(array(
-            							'type' => 'q-sort-answers',
-            							'url'  => qa_path($link) . '?sort=answers',
-                                                      'icon' => "icon-globe",
-            							'text' => qa_lang('breadcrumbs/most_answers'),
-                                                      'index' => $index ,
+                                                      'type'       => 'q-sort-answers',
+                                                      'url'        => qa_path($link) . '?sort=answers',
+                                                      'icon'       => "icon-comments",
+                                                      'text'       => qa_lang('breadcrumbs/most_answers'),
+                                                      'index'      => $index ,
                                                       'total_navs' => ++$total_navs ,
                                                 ));
                                           } else if ($sort === 'views') {
                                                 $br .= $this->breadcrumb_part(array(
-      								'type' => 'no-sort-views',
-      								'url'  => qa_path($link) . '?sort=views',
-                                                      'icon' => "icon-globe",
-      								'text' => qa_lang('breadcrumbs/most_views'),
-                                                      'index' => $index ,
+                                                      'type'       => 'no-sort-views',
+                                                      'url'        => qa_path($link) . '?sort=views',
+                                                      'icon'       => "icon-eye3",
+                                                      'text'       => qa_lang('breadcrumbs/most_views'),
+                                                      'index'      => $index ,
                                                       'total_navs' => ++$total_navs ,
                                                 ));
                                           }
+                                    }
+                                    break ;
+                               case 'updates':
+                                    $show = qa_get('show');
+                                    if (empty($show)) {
+                                          $br .= $this->breadcrumb_part(array(
+                                                'type'       => 'all-updates',
+                                                'url'        => qa_path($link),
+                                                'icon'       => "icon-thumb-tack",
+                                                'text'       => qa_lang('breadcrumbs/all_my_updates'),
+                                                'index'      => $index ,
+                                                'total_navs' => ++$total_navs ,
+                                          ));
+                                    } else if ($show === 'favorites') {
+                                          $br .= $this->breadcrumb_part(array(
+                                                'type'       => 'favorites',
+                                                'url'        => qa_path($link) . '?show=favorites',
+                                                'icon'       => "icon-heart",
+                                                'text'       => qa_lang('breadcrumbs/my_favorites'),
+                                                'index'      => $index ,
+                                                'total_navs' => ++$total_navs ,
+                                          ));
+                                    } else if ($show === 'content') {
+                                          $br .= $this->breadcrumb_part(array(
+                                                'type'       => 'content',
+                                                'url'        => qa_path($link) . '?show=content',
+                                                'icon'       => "icon-book",
+                                                'text'       => qa_lang('breadcrumbs/my_content'),
+                                                'index'      => $index ,
+                                                'total_navs' => ++$total_navs ,
+                                          ));
                                     }
 
                                     break;
@@ -319,16 +351,16 @@ class q2a_breadcrumbs_widget {
                         break;
                   case 'ask':
                         $class = "class='cs-breadcrumbs-ask'";
-                        $icon  = "icon-heart-o";
+                        $icon  = "icon-pied-piper-alt";
                         break;
                   case 'unanswered':
                         $class = "class='cs-breadcrumbs-unanswered'";
-                        $icon  = "icon-globe";
+                        $icon  = "icon-microphone-slash";
                         break;
                  case 'questions':
                         if ($index == 1) {
                               $class = "class='cs-breadcrumbs-questions'";
-                              $icon  = "icon-question-circle";
+                              $icon  = "icon-question";
                         }else if ( $index > 1 ) {
                               $class = "class='cs-breadcrumbs-categories'";
                               $icon  = "icon-folder-open";
@@ -337,26 +369,26 @@ class q2a_breadcrumbs_widget {
 
                   case 'account':
                         $class = "class='cs-breadcrumbs-account'";
-                        $icon  = "icon-flag-o";
+                        $icon  = "icon-briefcase";
                         break;
                   case 'search':
                         $class = "class='cs-breadcrumbs-search'";
-                        $icon  = "icon-flag-o";
+                        $icon  = "icon-search";
                         break;
                   case 'favorites':
                         $class = "class='cs-breadcrumbs-favorites'";
-                        $icon  = "icon-folder";
+                        $icon  = "icon-heart";
                         break;
                   case 'not-found':
                         $class = "class='cs-breadcrumbs-not-found'";
-                        $icon  = "icon-chain";
+                        $icon  = "icon-unlink";
                         break;
                   case 'users':
                          if ($index == 1) {
                               if ($total_navs == 1) {
                                     $extra_br .=  $this->breadcrumb_part(array(
                                                 'type' => 'q-sort-answers',
-                                                'icon' => "icon-globe",
+                                                'icon' => "icon-user3",
                                                 'text' => qa_lang('breadcrumbs/top_users'),
                                                 'index' => ++$index ,
                                                 'total_navs' => ++$total_navs ,
@@ -369,11 +401,11 @@ class q2a_breadcrumbs_widget {
                               switch ($nav) {
                                     case 'special':
                                           $class = "class='cs-breadcrumbs-user-special'";
-                                          $icon  = "icon-globe";
+                                          $icon  = "icon-user3";
                                           break;
                                     case 'blocked':
                                           $class = "class='cs-breadcrumbs-user-blocked'";
-                                          $icon  = "icon-globe";
+                                          $icon  = "icon-x";
                                           break;
                               }
 
@@ -390,19 +422,19 @@ class q2a_breadcrumbs_widget {
                               switch ($nav) {
                                     case 'wall':
                                           $class = "class='cs-breadcrumbs-user-wall'";
-                                          $icon  = "icon-bookmark-o";
+                                          $icon  = "icon-uniE622";
                                           break;
                                     case 'answers':
                                           $class = "class='cs-breadcrumbs-user-answers'";
-                                          $icon  = "icon-comment-o";
+                                          $icon  = "icon-comments-o";
                                           break;
                                     case 'questions':
                                           $class = "class='cs-breadcrumbs-user-questions'";
-                                          $icon  = "icon-question-circle";
+                                          $icon  = "icon-question";
                                           break;
                                     case 'activity':
                                           $class = "class='cs-breadcrumbs-user-activity'";
-                                          $icon  = " icon-flag-checkered";
+                                          $icon  = "icon-clock-o";
                                           break;
 
                                     default:
@@ -420,6 +452,12 @@ class q2a_breadcrumbs_widget {
                         }else if ($index == 2){
                               $class = "class='cs-breadcrumbs-user'";
                               $icon  = "icon-user";
+                        }
+                        break;
+                  case 'updates':
+                        if ($index == 1) {
+                              $class = "class='cs-breadcrumbs-message'";
+                              $icon  = "icon-bell-o";
                         }
                         break;
 
