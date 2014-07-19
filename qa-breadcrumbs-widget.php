@@ -68,7 +68,6 @@ class q2a_breadcrumbs_widget {
       function create_breadcrumbs($navs, $qa_content , $widget_opt, $template ) {
 			
             $br = "";
-            cbu_log("1.".$template);
 		if($template == 'not-found'){
 			$br .=$this->breadcrumb_part(array(
 					  'type' => 'not-found',
@@ -105,7 +104,6 @@ class q2a_breadcrumbs_widget {
                             'text' => qa_lang('breadcrumbs/questions'),
                         ));
                   }
-                  cbu_log("2.".$template);
                   $q_title = $qa_content['q_view']['raw']['title'] ;
                   $q_id = $qa_content['q_view']['raw']['postid'] ; 
                   $trunc_len = $widget_opt[q2a_breadcrumbs_admin::TRUNCATE_LENGTH];
@@ -119,7 +117,6 @@ class q2a_breadcrumbs_widget {
                       'text' => $this->truncate( $q_title, $trunc_len ),
                   ));
             } else {  //means non questions page 
-                  cbu_log("3.".$template);
 
                   if (count($navs) > 0) {
                         $link = "";
@@ -136,7 +133,6 @@ class q2a_breadcrumbs_widget {
                               $type = 'qa' ;
                         }
 
-                        cbu_log("4.".$template);
 
                         foreach ($navs as $nav) {
                               
