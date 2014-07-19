@@ -58,5 +58,7 @@ return array(
 			"top_users"    => "Top Scoring Users" ,
 			"special"      => "Special Users" ,
 			"blocked"      => "Blocked Users" ,
+			"activity"      => "Recent Activities" ,
 			"settings_saved"  => "Breadcrumbs settings has been saved " ,
+			"searching_for"  => "Searching For : " ,
 	);
