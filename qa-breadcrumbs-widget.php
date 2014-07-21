@@ -304,11 +304,7 @@ class q2a_breadcrumbs_widget {
             $total_navs = !empty($data['total_navs'])  ? $data['total_navs'] : 0 ;
             $icon       = !empty($data['icon'])  ? $data['icon'] : '' ;
             
-            $li_template = '<li {{class}}><a href="{{url}}"> <i class="{{icon}}" ></i> {{text}}</a></li>';
-
-           /* if ($index == $total_navs && !in_array($type , array('questions' , 'users'))) {
-                  $li_template = '<li {{class}}><i class="{{icon}}" ></i> {{text}} </li>';
-            }*/
+            $li_template = ami_get_li_template( $type , $index , $total_navs ) ;
 
             $class = "";
             $extra_br = "" ;

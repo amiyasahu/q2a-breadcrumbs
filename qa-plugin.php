@@ -46,7 +46,7 @@
 
 	define('AMI_BREADCRUMBS_DIR', dirname(__FILE__));
 	define('AMI_BREADCRUMBS_FOLDER', basename(dirname(__FILE__)));
-
+	require_once AMI_BREADCRUMBS_DIR . "/qa-breadcrumbs-utils.php" ;
 	qa_register_plugin_layer('qa-breadcrumbs-layer.php', 'Breadcrumbs Layer');	
 	qa_register_plugin_module('module', 'qa-breadcrumbs-admin.php', 'q2a_breadcrumbs_admin', 'Breadcrumbs');
 	qa_register_plugin_module('widget', 'qa-breadcrumbs-widget.php','q2a_breadcrumbs_widget','Breadcrumbs');

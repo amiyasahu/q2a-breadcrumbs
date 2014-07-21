@@ -60,6 +60,8 @@ return array(
 			"blocked"      => "Blocked Users" ,
 			"activity"      => "Recent Activities" ,
 			"settings_saved"  => "Breadcrumbs settings has been saved " ,
+			"dont_use_link_for_last_elem"  => "Do not use link for the last element (usually it is a self link )" ,
+			"dont_use_icons"  => "Do not use icons " ,
 			"searching_for"  => "Searching For : " ,
 			"all_my_updates"  => "All My Updates" ,
 			"my_favorites"  => "My Favorites" ,
