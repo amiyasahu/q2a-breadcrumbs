@@ -105,7 +105,11 @@
 	          case self::SHOW_HOME:
 	            return 1;
 	          case self::TRUNCATE_LENGTH:
-	            return 200 ;
+	            return 50 ;
+	          case self::NO_LINK_AT_LAST_ELEM:
+	            return 1 ;
+	          case self::DONT_USE_ICONS:
+	            return 0 ;
 	          default : 
 	            return null;  
 	      }
