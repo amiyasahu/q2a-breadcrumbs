@@ -79,9 +79,11 @@ class q2a_breadcrumbs_widget {
                   $question_page = @$qa_content['q_view'];
                   $cat           = @$question_page['where'];
                   $tags          = @$question_page['q_tags'];
-                  if (!!$cat) {
+                  $total_navs    = count($navs);
+                  $index         = 1 ;
+                  if (!empty($cat)) {
                         $categoryids = @$qa_content['categoryids'];
-                        if (!!$categoryids) {
+                        if (!empty($categoryids)) {
                               foreach ($categoryids as $categoryid) {
                                     $category_details = $this->get_cat($categoryid);
                                     if (is_array($category_details) && !empty($category_details)) {
@@ -89,19 +91,24 @@ class q2a_breadcrumbs_widget {
 							$text     = $category_details['title'];
 							$url      = $this->cat_path($backpath);
                                           $data = array(
-                                                'type' => 'cat',
-                                                'text' => $text,
-                                                'url'  => $url,
+                                                'type'       => 'cat',
+                                                'text'       => $text,
+                                                'url'        => $url,
+                                                'index'      => $index ,
+                                                'total_navs' => $total_navs ,
                                           );
                                           $br .=$this->breadcrumb_part($data);
                                     }
                               }
+                              $index++ ;
                         }
                   }else { //if question is asked with out any categories 
                         $br .=$this->breadcrumb_part(array(
-                            'type' => 'questions',
-                            'url'  => qa_path_html('questions'),
-                            'text' => qa_lang('breadcrumbs/questions'),
+                            'type'       => 'questions',
+                            'url'        => qa_path_html('questions'),
+                            'text'       => qa_lang('breadcrumbs/questions'),
+                            'index'      => $index++ ,
+                            'total_navs' => $total_navs ,
                         ));
                   }
                   $q_title = $qa_content['q_view']['raw']['title'] ;
@@ -112,10 +119,14 @@ class q2a_breadcrumbs_widget {
                   }
 
                   $br .=$this->breadcrumb_part(array(
-                      'type' => 'questions',
-                      'url'  =>  qa_q_path($q_id, $q_title, true) ,
-                      'text' => $this->truncate( $q_title, $trunc_len ),
+                      'type'       => 'questions',
+                      'url'        =>  qa_q_path($q_id, $q_title, true) ,
+                      'text'       => $this->truncate( $q_title, $trunc_len ),
+                      'index'      => $index ,
+                      'total_navs' => $total_navs ,
+                      'is_question' => true ,
                   ));
+
             } else {  //means non questions page 
 
                   if (count($navs) > 0) {
@@ -156,7 +167,7 @@ class q2a_breadcrumbs_widget {
                                      'text'       => $text,
                                      'nav'        => $nav ,
                                      'index'      => $index ,
-                                     'total_navs' => $total_navs 
+                                     'total_navs' => $total_navs ,
                               ));
                               // reset the link for next iteration 
                               $link = $prev_link ;
@@ -306,7 +317,7 @@ class q2a_breadcrumbs_widget {
             
             $li_template = ami_get_li_template( $type , $index , $total_navs ) ;
 
-            $class = "";
+            $class    = "";
             $extra_br = "" ;
             switch ($type) {
                   case 'home':
@@ -324,7 +335,7 @@ class q2a_breadcrumbs_widget {
                   case 'activity':
 				if ($index == 1) {
                               $class = "class='cs-breadcrumbs-activity'";
-                              $icon  = "icon-folder";
+                              $icon  = "icon-clock-o";
                         }else if ( $index > 1 ) {
                               $class = "class='cs-breadcrumbs-categories'";
                               $icon  = "icon-folder-open";
@@ -353,14 +364,16 @@ class q2a_breadcrumbs_widget {
                         $class = "class='cs-breadcrumbs-unanswered'";
                         $icon  = "icon-microphone-slash";
                         break;
-                 case 'questions':
-                        if ($index == 1) {
+                 case 'questions':     
+                        $is_question =  (!empty($data['is_question'])) ? $data['is_question'] : false  ;                                                                                                                     
+                        if ( $index == 1 || $is_question ) {
                               $class = "class='cs-breadcrumbs-questions'";
                               $icon  = "icon-question";
                         }else if ( $index > 1 ) {
                               $class = "class='cs-breadcrumbs-categories'";
                               $icon  = "icon-folder-open";
                         }
+
                         break;
 
                   case 'account':
@@ -432,7 +445,6 @@ class q2a_breadcrumbs_widget {
                                           $class = "class='cs-breadcrumbs-user-activity'";
                                           $icon  = "icon-clock-o";
                                           break;
-
                                     default:
                                           $class = "class='cs-breadcrumbs-user'";
                                           $icon  = "";
