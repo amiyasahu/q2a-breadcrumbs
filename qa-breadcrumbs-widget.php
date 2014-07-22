@@ -1,28 +1,11 @@
 <?php
 /*
       Question2Answer (c) Gideon Greenspan
-      Google Plus Badge (c) Amiya Sahu (developer.amiya@outlook.com)
-      
-      http://www.question2answer.org/
-
-      
-      File: qa-plugin/basic-adsense/qa-plugin.php
-      Version: See define()s at top of qa-include/qa-base.php
-      Description: Initiates Adsense widget plugin
-
-
-      This program is free software; you can redistribute it and/or
-      modify it under the terms of the GNU General Public License
-      as published by the Free Software Foundation; either version 2
-      of the License, or (at your option) any later version.
-      
-      This program is distributed in the hope that it will be useful,
-      but WITHOUT ANY WARRANTY; without even the implied warranty of
-      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-      GNU General Public License for more details.
-
-      More about this license: http://www.question2answer.org/license.php
+      Q2A Breadcrumbs (c) Amiya Sahu (developer.amiya@outlook.com)
 */
+
+/* don't allow this page to be requested directly from browser */ 
+
 if (!defined('QA_VERSION')) { // don't allow this page to be requested directly from browser
            header('Location: ../../');
            exit;
@@ -70,9 +53,9 @@ class q2a_breadcrumbs_widget {
             $br = "";
 		if($template == 'not-found'){
 			$br .=$this->breadcrumb_part(array(
-					  'type' => 'not-found',
-					  'url' => '/',
-					  'text' => qa_lang('breadcrumbs/not_found'),
+                                'type' => 'not-found',
+                                'url'  => '/',
+                                'text' => qa_lang('breadcrumbs/not_found'),
 				  ));
             }elseif (is_numeric(@$navs[0]) || !empty($qa_content['q_view'])) {     //if it is a question page 
                   // category is the first priority 
@@ -396,10 +379,10 @@ class q2a_breadcrumbs_widget {
                          if ($index == 1) {
                               if ($total_navs == 1) {
                                     $extra_br .=  $this->breadcrumb_part(array(
-                                                'type' => 'q-sort-answers',
-                                                'icon' => "icon-user3",
-                                                'text' => qa_lang('breadcrumbs/top_users'),
-                                                'index' => ++$index ,
+                                                'type'       => 'q-sort-answers',
+                                                'icon'       => "icon-user3",
+                                                'text'       => qa_lang('breadcrumbs/top_users'),
+                                                'index'      => ++$index ,
                                                 'total_navs' => ++$total_navs ,
                                           ));
                               }
