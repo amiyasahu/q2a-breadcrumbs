@@ -315,8 +315,16 @@ class q2a_breadcrumbs_widget {
                               $icon  = "icon-folder-open";
                         }
                         break;
+                  case 'hot':
+                        if ( $index == 1 ) {
+                               $icon  = "icon-fire";
+                               $class = "class='cs-breadcrumbs-hot'";
+                               $text  = qa_lang("breadcrumbs/hot");
+                        }
+                        break;
+
                   case 'activity':
-				if ($index == 1) {
+				                if ($index == 1) {
                               $class = "class='cs-breadcrumbs-activity'";
                               $icon  = "icon-clock-o";
                         }else if ( $index > 1 ) {
