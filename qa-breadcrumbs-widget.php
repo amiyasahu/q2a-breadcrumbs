@@ -314,6 +314,19 @@ class q2a_breadcrumbs_widget {
                               $icon  = "folder-open";
                         }
                         break;
+                  case 'login':
+                        if ( $index >= 1 ) {
+                              $class = "class='cs-breadcrumbs-login'";
+                              $icon  = "sign-in";
+                        }
+                        break;
+                  case 'register':
+                        if ( $index >= 1 ) {
+                              $class = "class='cs-breadcrumbs-register'";
+                              $icon  = "fax";
+                        }
+                        break;
+
                   case 'hot':
                         if ( $index == 1 ) {
                                $icon  = "fire";
