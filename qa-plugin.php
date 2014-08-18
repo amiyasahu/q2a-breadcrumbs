@@ -4,19 +4,38 @@
 	Question2Answer (c) Gideon Greenspan
 	Breadcrumbs (c) Amiya Sahu (developer.amiya@outlook.com)
 
+	http://www.question2answer.org/
+
+	
+	File: qa-plugin/basic-adsense/qa-basic-adsense.php
+	Version: See define()s at top of qa-include/qa-base.php
+	Description: Widget module class for AdSense widget plugin
+
+
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License
+	as published by the Free Software Foundation; either version 2
+	of the License, or (at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	More about this license: http://www.question2answer.org/license.php
 */
 
 /*
 	Plugin Name: Q2A Breadcrumbs
-	Plugin URI: http://amiyasahu.com
+	Plugin URI: https://github.com/amiyasahu/q2a-breadcrumbs
 	Plugin Description: Provides a basic widget for displaying breadcrumbs 
-	Plugin Version: 1.0
+	Plugin Version: 1.1
 	Plugin Date: 2014-07-06
 	Plugin Author: Amiya Sahu
 	Plugin Author URI: http://www.amiyasahu.com/
 	Plugin License: GPLv2
 	Plugin Minimum Question2Answer Version: 1.6
-	Plugin Update Check URI: 
+	Plugin Update Check URI: https://raw.githubusercontent.com/amiyasahu/q2a-breadcrumbs/master/qa-plugin.php
 */
 
 
