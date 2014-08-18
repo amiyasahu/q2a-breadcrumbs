@@ -46,4 +46,6 @@ return array(
 			"all_my_updates"  => "All My Updates" ,
 			"my_favorites"  => "My Favorites" ,
 			"my_content"  => "My Content" ,
+			"use_fa_cdn"  => "Use Font Awesome CDN for faster page loading" ,
+			"fa_cdn_link"  => "Font Awesome CDN link url (give a new one if the existing does not works)" ,
 	);
