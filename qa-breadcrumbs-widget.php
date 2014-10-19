@@ -77,7 +77,7 @@ class q2a_breadcrumbs_widget {
                                 'url'  => '/',
                                 'text' => qa_lang('breadcrumbs/not_found'),
 		                             ));
-            }elseif (is_numeric(@$navs[0]) || !empty($qa_content['q_view'])) {     //if it is a question page 
+            }elseif ($template === 'question') {     //if it is a question page 
                   // category is the first priority 
                   $question_page = @$qa_content['q_view'];
                   $cat           = @$question_page['where'];
@@ -105,7 +105,8 @@ class q2a_breadcrumbs_widget {
                               }
                               $index++ ;
                         }
-                  }else { //if question is asked with out any categories 
+                  }else { 
+                        //if question is asked with out any categories 
                         $br .=$this->breadcrumb_part(array(
                             'type'       => 'questions',
                             'url'        => qa_path_html('questions'),
@@ -114,24 +115,28 @@ class q2a_breadcrumbs_widget {
                             'total_navs' => $total_navs ,
                         ));
                   }
-                  $q_title = $qa_content['q_view']['raw']['title'] ;
-                  $q_id = $qa_content['q_view']['raw']['postid'] ; 
-                  $trunc_len = $widget_opt[q2a_breadcrumbs_admin::TRUNCATE_LENGTH];
-                  
-                  if ($trunc_len <= 0 ) {
-                       $trunc_len = strlen($q_title) ;
+                     
+                  if (!empty($qa_content['q_view'])) {
+
+                      $q_title = !empty($qa_content['q_view']['raw']['title']) ? $qa_content['q_view']['raw']['title'] : '' ;
+                      $q_id = !empty($qa_content['q_view']['raw']['postid']) ? $qa_content['q_view']['raw']['postid'] : '' ; 
+                      $trunc_len = $widget_opt[q2a_breadcrumbs_admin::TRUNCATE_LENGTH];
+                      
+                      if ($trunc_len <= 0 ) {
+                           $trunc_len = strlen($q_title) ;
+                      }
+
+                      $br .=$this->breadcrumb_part(array(
+                          'type'       => 'questions',
+                          'url'        =>  qa_q_path($q_id, $q_title, true) ,
+                          'text'       => $this->truncate( $q_title, $trunc_len ),
+                          'index'      => $index ,
+                          'total_navs' => $total_navs ,
+                          'is_question' => true ,
+                      ));
                   }
 
-                  $br .=$this->breadcrumb_part(array(
-                      'type'       => 'questions',
-                      'url'        =>  qa_q_path($q_id, $q_title, true) ,
-                      'text'       => $this->truncate( $q_title, $trunc_len ),
-                      'index'      => $index ,
-                      'total_navs' => $total_navs ,
-                      'is_question' => true ,
-                  ));
-
-            } else {  //means non questions page 
+            } else {  //for non questions page 
 
                   if (count($navs) > 0) {
                         $link = "";
