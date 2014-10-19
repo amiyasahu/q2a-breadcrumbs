@@ -5,8 +5,8 @@
 
 	http://www.question2answer.org/
 
-	
-	File: qa-plugin/q2a-breadcrumbs-master/qa-breadcrumbs-lang-default.php
+	Rusian language by Alvaro 
+	File: qa-plugin/q2a-breadcrumbs/qa-breadcrumbs-lang-es.php
 	Version: See define()s at top of qa-include/qa-base.php
 	Description: Widget module class for AdSense widget plugin
 

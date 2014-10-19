@@ -6,7 +6,7 @@
 	http://www.question2answer.org/
 
 	
-	File: qa-plugin/basic-adsense/qa-basic-adsense.php
+	File: qa-plugin/q2a-breadcrumbs/qa-breadcrumbs-lang-default.php
 	Version: See define()s at top of qa-include/qa-base.php
 	Description: Widget module class for AdSense widget plugin
 
