@@ -181,6 +181,22 @@ class q2a_breadcrumbs_widget {
                                         $category_details = $this->get_cat_from_tags($nav);
                                         $text = $category_details['title'];
                                     }
+                              }else if ($template == 'tag') {
+                                    if ($nav == 'tag' && $index == 1) {
+                                        $text = qa_lang('breadcrumbs/tags');
+                                    }
+                              }else if ($template == 'qa') {
+                                    if ($index >= 1) {
+                                        //then it is showing categories 
+                                        $category_details = $this->get_cat_from_tags($nav);
+                                        $text = $category_details['title'];
+                                    }
+                              }else if ($template == 'activity') {
+                                    if ($index > 1) {
+                                        //then it is showing categories 
+                                        $category_details = $this->get_cat_from_tags($nav);
+                                        $text = $category_details['title'];
+                                    }
                               }
 
 					                    $br   .= $this->breadcrumb_part(array(
