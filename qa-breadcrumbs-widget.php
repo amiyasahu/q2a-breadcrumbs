@@ -71,12 +71,12 @@ class q2a_breadcrumbs_widget {
       function create_breadcrumbs($navs, $qa_content , $widget_opt, $template ) {
 			
             $br = "";
-		if($template == 'not-found'){
-			$br .=$this->breadcrumb_part(array(
+		        if($template == 'not-found'){
+			           $br .=$this->breadcrumb_part(array(
                                 'type' => 'not-found',
                                 'url'  => '/',
                                 'text' => qa_lang('breadcrumbs/not_found'),
-				  ));
+		                             ));
             }elseif (is_numeric(@$navs[0]) || !empty($qa_content['q_view'])) {     //if it is a question page 
                   // category is the first priority 
                   $question_page = @$qa_content['q_view'];
@@ -90,9 +90,9 @@ class q2a_breadcrumbs_widget {
                               foreach ($categoryids as $categoryid) {
                                     $category_details = $this->get_cat($categoryid);
                                     if (is_array($category_details) && !empty($category_details)) {
-							$backpath = $category_details['backpath'];
-							$text     = $category_details['title'];
-							$url      = $this->cat_path($backpath);
+                            							$backpath = $category_details['backpath'];
+                            							$text     = $category_details['title'];
+                            							$url      = $this->cat_path($backpath);
                                           $data = array(
                                                 'type'       => 'cat',
                                                 'text'       => $text,
@@ -117,6 +117,7 @@ class q2a_breadcrumbs_widget {
                   $q_title = $qa_content['q_view']['raw']['title'] ;
                   $q_id = $qa_content['q_view']['raw']['postid'] ; 
                   $trunc_len = $widget_opt[q2a_breadcrumbs_admin::TRUNCATE_LENGTH];
+                  
                   if ($trunc_len <= 0 ) {
                        $trunc_len = strlen($q_title) ;
                   }
@@ -147,10 +148,9 @@ class q2a_breadcrumbs_widget {
                         if (empty($template) || $template == 'qa') {
                               $type = 'qa' ;
                         }
-
                         foreach ($navs as $nav) {
                               
-					$link .= (!!$link) ? "/" . $nav : $nav;
+				                      $link .= (!!$link) ? "/" . $nav : $nav;
                               // added this to fix users page bug and tag page bug 
                               $prev_link =  $link ;
                               $link = ($link === "user") ? "users" : $link ;
@@ -162,9 +162,23 @@ class q2a_breadcrumbs_widget {
                               }else if ($template == 'search') {
                                     $text = qa_lang('breadcrumbs/searching_for') . qa_get('q') ;
                                     $link = qa_self_html() ;
+                              }else if ($template == 'questions') {
+                                    $sort = qa_get('sort');
+                                    $non_cat = array('','hot','votes','answers','views','questions');
+                                    if (!in_array($nav, $non_cat)) {
+                                        //then it is showing categories 
+                                        $category_details = $this->get_cat_from_tags($nav);
+                                        $text = $category_details['title'];
+                                    }
+                              }else if ($template == 'categories') {
+                                    if ($nav !== 'categories') {
+                                        //then it is showing categories 
+                                        $category_details = $this->get_cat_from_tags($nav);
+                                        $text = $category_details['title'];
+                                    }
                               }
 
-					$br   .= $this->breadcrumb_part(array(
+					                    $br   .= $this->breadcrumb_part(array(
                                      'type'       => $type,
                                      'url'        => $link ,
                                      'text'       => $text,
@@ -513,6 +527,28 @@ class q2a_breadcrumbs_widget {
                   return;
 
             return (qa_db_select_with_pending(qa_db_full_category_selectspec($cat_id, true)));
+      }
+
+      function get_cat_from_tags($tags) {
+            require_once QA_INCLUDE_DIR . "/qa-db-selects.php";
+            if (!$tags) 
+                  return;
+
+            return (qa_db_select_with_pending($this->db_category_selectspec($tags)));
+      }
+
+      function db_category_selectspec($tags)
+      {
+
+        $identifiersql='tags=$';
+        
+        return array(
+          'columns' => array('categoryid', 'parentid', 'title', 'tags', 'qcount', 'content', 'backpath'),
+          'source' => '^categories WHERE '.$identifiersql,
+          'arguments' => array($tags),
+          'single' => 'true',
+        );
+
       }
 
       function cat_path($categorybackpath){
