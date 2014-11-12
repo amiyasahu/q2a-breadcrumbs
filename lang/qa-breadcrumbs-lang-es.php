@@ -5,7 +5,7 @@
 
 	http://www.question2answer.org/
 
-	Rusian language by Alvaro 
+	Spanish language by Alvaro Fernandez
 	File: qa-plugin/q2a-breadcrumbs/qa-breadcrumbs-lang-es.php
 	Version: See define()s at top of qa-include/qa-base.php
 	Description: Widget module class for AdSense widget plugin
@@ -34,7 +34,7 @@ if (!defined('QA_VERSION')) {
 return array(
 			"opt_yes"         => "Si" ,
 			"opt_no"          => "No" ,
-			"opt_truncate"    => "Truncar el titulo en Bbreadcrumb" ,
+			"opt_truncate"    => "Truncar el titulo en Breadcrumb" ,
 			"not_found"       => "Pagina No Encontrada" ,
 			"recent_que"      => "Preguntas recientes" ,
 			"home"            => "Inicio" ,
@@ -60,10 +60,10 @@ return array(
 			"special"      => "Usuarios Especiales" ,
 			"blocked"      => "Usuarios Bloqueados" ,
 			"activity"      => "Actividad reciente" ,
-			"settings_saved"  => "LA configuración de Breadcrumbs ha sido guardada" ,
+			"settings_saved"  => "La configuración de Breadcrumbs ha sido guardada con exito" ,
 			"dont_use_link_for_last_elem"  => "No enlazar el ultimo elemento (usualmente es un auto link)" ,
 			"dont_use_icons"  => "No usar iconos" ,
-			"searching_for"  => "Buscando por: " ,
+			"searching_for"  => "Buscando: " ,
 			"all_my_updates"  => "Todas mis Actualizaciones" ,
 			"my_favorites"  => "Mis Favoritos" ,
 			"my_content"  => "Mi Contenido" ,
