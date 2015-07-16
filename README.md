@@ -20,3 +20,13 @@ No doubt the QA sites are really big having 500+ pages of questions (usually alm
 From a search engine point of view; Google actually displays the breadcrumbs in the search results giving you more links in each search listing, which is a positive thing. It Provides another mechanism to highlight important keywords for the search engines to note in your navigation.
  
 Also it adds content relevancy to your pages and adds on-page SEO emphasis that highlights specific anchor text rich linking to internal pages.
+
+Disclaimer
+----------
+This is **beta** code.  It is probably okay for production environments, but may not work exactly as expected.  Refunds will not be given.  If it breaks, you get to keep both parts.
+
+About Question2Answer
+---------
+Question2Answer is a free and open source platform for Q&A sites. For more information, visit:
+
+http://www.question2answer.org/
