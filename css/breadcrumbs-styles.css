@@ -16,8 +16,6 @@
   color: #ccc;
   font-weight: bolder ;
    content: "/\00a0"; 
-  /* content: "\f101"; */
-  /*content: "\f0da";*/
 }
 .breadcrumb > .active {
   color: #777;

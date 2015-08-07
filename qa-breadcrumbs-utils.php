@@ -54,3 +54,19 @@
         return $li_template;
     }
 
+    /**
+     * Returns the language html value as defined in lang file
+     *
+     * @param      $indentifier
+     * @param null $subs
+     *
+     * @return mixed|string
+     */
+    function breadcrumb_lang( $indentifier, $subs = null )
+    {
+        if ( !is_array( $subs ) )
+            return empty( $subs ) ? qa_lang_html( 'breadcrumbs/' . $indentifier ) : qa_lang_html_sub( 'breadcrumbs/' . $indentifier, $subs );
+        else
+            return strtr( qa_lang_html( 'breadcrumbs/' . $indentifier ), $subs );
+    }
+

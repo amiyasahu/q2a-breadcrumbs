@@ -36,7 +36,6 @@
 
         function head_custom()
         {
-
             qa_html_theme_base::head_custom();
             if ( $this->template != 'admin' ) {
                 $this->output( '

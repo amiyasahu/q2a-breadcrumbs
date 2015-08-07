@@ -57,14 +57,19 @@
         function output_widget( $region, $place, $themeobject, $template, $request, $qa_content )
         {
             $widget_opt = qa_get_options( array( q2a_breadcrumbs_admin::SHOW_HOME, q2a_breadcrumbs_admin::TRUNCATE_LENGTH ) );
+            $breadcrumb = new Breadcrumb( array( 'themeobject' => $themeobject,
+                                                 'content'     => $qa_content,
+                                                 'template'    => $template,
+                                                 'request'     => $request ) );
+            $breadcrumb->generate();
 
             // breadcrumb start
-            $themeobject->output( '<ul class="breadcrumb clearfix">' );
+            /*$themeobject->output( '<ul class="breadcrumb clearfix">' );
             if ( $widget_opt[ q2a_breadcrumbs_admin::SHOW_HOME ] ) {
                 $themeobject->output( $this->breadcrumb_part( array( 'type' => 'home' ) ) );
             }
             $themeobject->output( $this->create_breadcrumbs( $this->navigation(), $qa_content, $widget_opt, $template ) );
-            $themeobject->output( '</ul>' );
+            $themeobject->output( '</ul>' );*/
         }
 
         function breadcrumb_part( $data )
