@@ -61,6 +61,7 @@
                                                  'content'     => $qa_content,
                                                  'template'    => $template,
                                                  'request'     => $request ) );
+
             $breadcrumb->generate();
 
             // breadcrumb start
@@ -374,8 +375,10 @@
                         $prev_link = $link;
                         $link = ( $link === "user" ) ? "users" : $link;
                         $link = ( $link === "tag" ) ? "tags" : $link;
+
                         $text = ( in_array( $nav, $translate_this_arr ) ) ? qa_lang( "breadcrumbs/" . $nav ) : ucwords( $nav );
                         $link = qa_path( $link );
+
                         if ( in_array( $template, array( 'plugin', 'custom' ) ) && !empty( $qa_content['title'] ) ) {
                             $text = $qa_content['title'];
                         } else if ( $template == 'search' ) {

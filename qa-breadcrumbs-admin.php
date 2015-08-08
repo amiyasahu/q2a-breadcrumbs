@@ -37,6 +37,7 @@
         const FA_CDN = 'ami_breadcrumb_fa_cdn';
         const CUSTOM_CSS = 'ami_breadcrumb_custom_css';
         const SAVE_BUTTON = 'ami_breadcrumb_save_btn';
+        const BASE_CLASS = 'breadcrumbs';
 
         function allow_template( $template )
         {
