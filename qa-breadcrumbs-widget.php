@@ -62,8 +62,11 @@
                 'template'    => $template,
                 'request'     => $request,
             );
+
+            $themeobject->output('<div class="breadcrumb-wrapper">');
             $breadcrumb = new Ami_Ami_Breadcrumb( $args );
             $breadcrumb->generate();
+            $themeobject->output('</div">');
         }
     }
 
