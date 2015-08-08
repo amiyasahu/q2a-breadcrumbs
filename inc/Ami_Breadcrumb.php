@@ -341,7 +341,7 @@
         private function generate_search_page_breadcrumb()
         {
             $args = array(
-                'url'  => qa_path_absolute( qa_request(), $_GET ),
+                'url'  => qa_path_absolute( $this->request, $_GET ),
                 'text' => breadcrumb_lang( 'searching_for' ) . qa_get( 'q' ),
                 'type' => $this->template,
             );
@@ -443,7 +443,7 @@
             }
 
             $args = array(
-                'url'  => qa_path_absolute( qa_request(), $_GET ),
+                'url'  => qa_path_absolute( $this->request, $_GET ),
                 'text' => $text,
                 'type' => $this->template,
             );
@@ -464,7 +464,7 @@
             }
 
             $args = array(
-                'url'  => qa_path_absolute( qa_request(), $_GET ),
+                'url'  => qa_path_absolute( $this->request, $_GET ),
                 'text' => $text,
                 'type' => $this->template,
             );
@@ -477,7 +477,7 @@
             $to = qa_request_part( 1 );
             if ( strlen( $to ) ) {
                 $args = array(
-                    'url'  => qa_path_absolute( qa_request(), $_GET ),
+                    'url'  => qa_path_absolute( $this->request, $_GET ),
                     'text' => breadcrumb_lang( 'message_for_x', $to ),
                     'type' => $this->template,
                 );
@@ -489,7 +489,7 @@
         private function generate_user_specific_pages_breadcrumb()
         {
             $args = array(
-                'url'  => qa_path_absolute( qa_request() ),
+                'url'  => qa_path_absolute( $this->request ),
                 'text' => breadcrumb_lang( qa_request_part( 2 ) ),
                 'type' => $this->template,
             );
@@ -524,7 +524,7 @@
 
                 }
                 $args = array(
-                    'url'  => qa_path_absolute( qa_request(), $_GET ),
+                    'url'  => qa_path_absolute( $this->request, $_GET ),
                     'text' => $text,
                     'type' => $this->template,
                 );
@@ -548,7 +548,7 @@
                         break;
                 }
                 $args = array(
-                    'url'  => qa_path_absolute( qa_request(), $_GET ),
+                    'url'  => qa_path_absolute( $this->request, $_GET ),
                     'text' => $text,
                     'type' => $this->template,
                 );
@@ -573,7 +573,7 @@
                 }
 
                 $args = array(
-                    'url'  => qa_path_absolute( qa_request(), $_GET ),
+                    'url'  => qa_path_absolute( $this->request, $_GET ),
                     'text' => $text,
                     'type' => $this->template,
                 );
