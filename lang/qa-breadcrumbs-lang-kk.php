@@ -62,11 +62,8 @@
         "activity"                    => "Соңғы белсенділік",
         "settings_saved"              => "Баптау сәтті сақталды ",
         "dont_use_link_for_last_elem" => "Do not use link for the last element (usually it is a self link )",
-        "dont_use_icons"              => "Иконка қолданбау ",
         "searching_for"               => "Іздеу нәтижесі : ",
         "all_my_updates"              => "Менің жаңартуларым",
         "my_favorites"                => "Менің таңдаулыларым",
         "my_content"                  => "Менің контентім",
-        "use_fa_cdn"                  => "Font Awesome CDN қаріпті қолданыңыз, жыладм жұмыс істеуі үшін",
-        "fa_cdn_link"                 => "Font Awesome CDN сілтемесі)",
     );

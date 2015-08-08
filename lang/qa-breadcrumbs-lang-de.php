@@ -63,11 +63,8 @@
         "activity"                    => "Alle Aktivitäten",
         "settings_saved"              => "Breadcrumbs Einstellungen gespeichert ",
         "dont_use_link_for_last_elem" => "Nicht den Link für letztes Element verwenden (dieser ist im Normalfall ein Selbstlink)",
-        "dont_use_icons"              => "Keine Icons verwenden ",
         "searching_for"               => "Suchen nach: ",
         "all_my_updates"              => "Meine Aktualisierungen",
         "my_favorites"                => "Meine Favoriten",
         "my_content"                  => "Meine Beiträge",
-        "use_fa_cdn"                  => "Benutze Font Awesome DCN, um die Seiten schneller zu laden",
-        "fa_cdn_link"                 => "URL Link zu Font Awesome CDN (einen Neuen vergeben, falls dieser nicht funktionieren sollte)",
     );

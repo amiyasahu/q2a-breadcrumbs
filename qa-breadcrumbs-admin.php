@@ -32,9 +32,6 @@
         const SHOW_HOME = 'ami_breadcrumb_show_home';
         const TRUNCATE_LENGTH = 'ami_breadcrumb_trunc_len';
         const NO_LINK_AT_LAST_ELEM = 'ami_breadcrumb_no_link_last_elem';
-        const DONT_USE_ICONS = 'ami_breadcrumb_dont_use_icons';
-        const USE_FA_CDN = 'ami_breadcrumb_use_fa_cdn';
-        const FA_CDN = 'ami_breadcrumb_fa_cdn';
         const CUSTOM_CSS = 'ami_breadcrumb_custom_css';
         const SAVE_BUTTON = 'ami_breadcrumb_save_btn';
         const BASE_CLASS = 'breadcrumbs';
@@ -51,9 +48,6 @@
             if ( qa_clicked( self::SAVE_BUTTON ) ) {
                 qa_opt( self::SHOW_HOME, (bool) qa_post_text( self::SHOW_HOME ) );
                 qa_opt( self::NO_LINK_AT_LAST_ELEM, (bool) qa_post_text( self::NO_LINK_AT_LAST_ELEM ) );
-                qa_opt( self::DONT_USE_ICONS, (bool) qa_post_text( self::DONT_USE_ICONS ) );
-                qa_opt( self::USE_FA_CDN, (bool) qa_post_text( self::USE_FA_CDN ) );
-                qa_opt( self::FA_CDN, qa_post_text( self::FA_CDN ) );
                 qa_opt( self::TRUNCATE_LENGTH, qa_post_text( self::TRUNCATE_LENGTH ) );
                 qa_opt( self::CUSTOM_CSS, qa_post_text( self::CUSTOM_CSS ) );
                 $saved = true;
@@ -81,26 +75,6 @@
                         'tags'  => 'name="' . self::NO_LINK_AT_LAST_ELEM . '"',
                         'value' => qa_opt( self::NO_LINK_AT_LAST_ELEM ),
                     ),
-                    self::DONT_USE_ICONS       => array(
-                        'label' => qa_lang( 'breadcrumbs/dont_use_icons' ),
-                        'type'  => 'checkbox',
-                        'tags'  => 'name="' . self::DONT_USE_ICONS . '"',
-                        'value' => qa_opt( self::DONT_USE_ICONS ),
-                    ),
-                    self::USE_FA_CDN           => array(
-                        'label' => qa_lang( 'breadcrumbs/use_fa_cdn' ),
-                        'type'  => 'checkbox',
-                        'tags'  => 'name="' . self::USE_FA_CDN . '"',
-                        'value' => qa_opt( self::USE_FA_CDN ),
-                    ),
-
-                    self::FA_CDN               => array(
-                        'label' => qa_lang( 'breadcrumbs/fa_cdn_link' ),
-                        'type'  => 'text',
-                        'tags'  => 'name="' . self::FA_CDN . '"',
-                        'value' => qa_opt( self::FA_CDN ),
-                    ),
-
                     self::CUSTOM_CSS           => array(
                         'label' => qa_lang( 'breadcrumbs/custom_css' ),
                         'type'  => 'textarea',
@@ -125,16 +99,11 @@
 
             switch ( $option ) {
                 case self::SHOW_HOME:
-                case self::USE_FA_CDN:
                     return 1;
                 case self::TRUNCATE_LENGTH:
                     return 50;
                 case self::NO_LINK_AT_LAST_ELEM:
                     return 1;
-                case self::DONT_USE_ICONS:
-                    return 0;
-                case self::FA_CDN:
-                    return '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css';
 
                 default :
                     return null;

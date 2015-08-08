@@ -62,11 +62,8 @@
         "activity"                    => "Actividad reciente",
         "settings_saved"              => "La configuración de Breadcrumbs ha sido guardada con exito",
         "dont_use_link_for_last_elem" => "No enlazar el ultimo elemento (usualmente es un auto link)",
-        "dont_use_icons"              => "No usar iconos",
         "searching_for"               => "Buscando: ",
         "all_my_updates"              => "Todas mis Actualizaciones",
         "my_favorites"                => "Mis Favoritos",
         "my_content"                  => "Mi Contenido",
-        "use_fa_cdn"                  => "Usar Font Awesome CDN paa acelerar carga de la pagina",
-        "fa_cdn_link"                 => "Font Awesome CDN link url (en caso de que el existente no funcione)",
     );
