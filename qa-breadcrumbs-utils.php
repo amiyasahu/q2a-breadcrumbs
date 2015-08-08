@@ -50,7 +50,7 @@
         }
     }
 
-    if ( !function_exists( '!' ) ) {
+    if ( !function_exists( 'array_first' ) ) {
         /**
          * Returns the first element in an array.
          *
