@@ -1,0 +1,64 @@
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-top: 0;
+    list-style: none;
+    background-color: #3498DB ;
+    display: block;
+}
+
+.breadcrumb > li {
+    display: inline-block;
+}
+
+.breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #fff;
+    font-weight: normal;
+    content: "/\00a0";
+}
+
+.breadcrumb > .active {
+    color: #EEEEEE;
+}
+
+.breadcrumb > li > a,
+.breadcrumb > li i,
+.breadcrumb > li span {
+    color: #fff;
+    font-size: 15px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.breadcrumb > li > a:hover {
+    text-decoration: none;
+}
+
+.breadcrumb > .active > a {
+    color: #fff;
+}
+
+.breadcrumb > li:last-child > a,
+.breadcrumb > li:last-child i,
+.breadcrumb > li:last-child span {
+    color: #fff;
+}
+
+.qa-widget-full.qa-widget-full-high {
+    margin-top: 0px;
+}
+
+.breadcrumb > li i,
+.breadcrumb > li:last-child i {
+    font-weight: normal;
+}
+
+@media (max-width: 767px) {
+    .breadcrumb,
+    .breadcrumb > li > a,
+    .breadcrumb > li i,
+    .breadcrumb > li span {
+        font-size: 12px;
+    }
+}

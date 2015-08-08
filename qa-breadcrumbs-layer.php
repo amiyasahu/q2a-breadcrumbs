@@ -52,9 +52,30 @@
         {
             qa_html_theme_base::head_css();
             if ( $this->template != 'admin' ) {
-                $breadcrumb_css_url = qa_path_to_root() . 'qa-plugin/' . AMI_BREADCRUMBS_FOLDER . '/css/breadcrumbs-styles.css';
+                $breadcrumb_css_url = $this->get_css_file_for_theme( qa_opt( 'site_theme' ), qa_path_to_root() . 'qa-plugin/' . AMI_BREADCRUMBS_FOLDER . '/css/' );
+                //$breadcrumb_css_url = qa_path_to_root() . 'qa-plugin/' . AMI_BREADCRUMBS_FOLDER . '/css/breadcrumbs-styles.css';
                 $this->output( '<link rel="stylesheet" TYPE="text/css" href="' . $breadcrumb_css_url . '"/>' );
             }
+        }
+
+        private function get_css_file_for_theme( $theme_name, $css_base_dir = null )
+        {
+            $mapper = $this->css_files_mapper();
+
+            $css_file = array_key_exists( strtolower( $theme_name ), $mapper )
+                ? $mapper[ strtolower( $theme_name ) ]
+                : $mapper['default'];
+
+            return !is_null( $css_base_dir ) ? $css_base_dir . $css_file : $css_file;
+        }
+
+        private function css_files_mapper()
+        {
+            return array(
+                'snowflat' => 'SnowFlat.css',
+                'donut'    => 'donut.css',
+                'default'  => 'default.css',
+            );
         }
     }
 
