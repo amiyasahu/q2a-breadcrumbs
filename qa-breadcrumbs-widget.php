@@ -62,7 +62,7 @@
                 'template'    => $template,
                 'request'     => $request,
             );
-            $breadcrumb = new Breadcrumb( $args );
+            $breadcrumb = new Ami_Ami_Breadcrumb( $args );
             $breadcrumb->generate();
         }
     }

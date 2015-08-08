@@ -48,3 +48,75 @@
             return strtr( qa_lang_html( 'breadcrumbs/' . $indentifier ), $subs );
     }
 
+    /**
+     * Returns the first element in an array.
+     *
+     * @param  array $array
+     * @return mixed
+     */
+
+    function array_first( array $array )
+    {
+        return reset( $array );
+    }
+
+    /**
+     * Returns the last element in an array.
+     *
+     * @param  array $array
+     * @return mixed
+     */
+    function array_last( array $array )
+    {
+        return end( $array );
+    }
+
+    /**
+     * Returns the first key in an array.
+     *
+     * @param  array $array
+     * @return int|string
+     */
+    function array_first_key( array $array )
+    {
+        reset( $array );
+
+        return key( $array );
+    }
+
+    /**
+     * Returns the last key in an array.
+     *
+     * @param  array $array
+     * @return int|string
+     */
+    function array_last_key( array $array )
+    {
+        end( $array );
+
+        return key( $array );
+    }
+
+    /**
+     * Checks wheather the provided key is the first key of the array
+     *
+     * @param array $array
+     * @param $key
+     * @return bool
+     */
+    function array_is_first_key( array $array, $key )
+    {
+        return array_first_key( $array ) == $key;
+    }
+
+    /**
+     * Checks wheather the provided key is the first key of the array
+     *
+     * @param array $array
+     * @param $key
+     * @return bool
+     */
+    function array_is_last_key( array $array, $key )
+    {
+        return array_last_key( $array ) == $key;
+    }
