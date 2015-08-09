@@ -91,6 +91,7 @@
                 case 'messages' :
                 case 'message' :
                 case 'favorites' :
+                case 'answers' :
 
                     $is_last_elem = false;
                     if ( !in_array( $this->template, array( 'users', 'questions', 'unanswered' ) ) && ( count( qa_request_parts() ) <= 1 ) ) {
