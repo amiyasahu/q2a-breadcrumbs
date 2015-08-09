@@ -195,7 +195,7 @@
                     'text' => breadcrumb_lang( 'home' ),
                     'type' => 'home',
                 );
-                $this->generate_breadcrumb_part( $args );
+                $this->generate_breadcrumb_element( $args );
             }
 
         }
@@ -206,15 +206,15 @@
          * @param $args
          * ==============================================
          */
-        public function generate_breadcrumb_part( $args, $is_last_element = false )
+        public function generate_breadcrumb_element( $args, $is_last_element = false )
         {
-            $breadcrumb_part = new Ami_BreadcrumbElement( $args );
+            $breadcrumb_elem = new Ami_BreadcrumbElement( $args );
 
             if ( $is_last_element ) {
-                $breadcrumb_part->is_last_elem = true;
+                $breadcrumb_elem->is_last_elem = true;
             }
 
-            $this->themeobject->output( $breadcrumb_part->get() );
+            $this->themeobject->output( $breadcrumb_elem->get() );
         }
 
         /**
@@ -324,7 +324,7 @@
                 'text' => breadcrumb_lang( 'not_found' ),
                 'type' => $this->template,
             );
-            $this->generate_breadcrumb_part( $args, true );
+            $this->generate_breadcrumb_element( $args, true );
         }
 
 
@@ -363,7 +363,7 @@
                     'url'  => qa_q_path( @$question_page['raw']['postid'], $q_title, true ),
                     'text' => ( $trunc_len > 0 ) ? $this->truncate( $q_title, $trunc_len ) : $q_title,
                 );
-                $this->generate_breadcrumb_part( $args, true );
+                $this->generate_breadcrumb_element( $args, true );
             }
         }
 
@@ -380,7 +380,7 @@
                 'text' => $category_details['title'],
                 'type' => $this->template,
             );
-            $this->generate_breadcrumb_part( $args, $is_last_elem );
+            $this->generate_breadcrumb_element( $args, $is_last_elem );
         }
 
         /**
@@ -395,7 +395,7 @@
                 'text' => breadcrumb_lang( 'questions' ),
                 'url'  => qa_path_html( 'questions' ),
             );
-            $this->generate_breadcrumb_part( $args );
+            $this->generate_breadcrumb_element( $args );
         }
 
         /**
@@ -411,7 +411,7 @@
                 'type' => $this->template,
             );
 
-            $this->generate_breadcrumb_part( $args, true );
+            $this->generate_breadcrumb_element( $args, true );
         }
 
         /**
@@ -428,7 +428,7 @@
                 'type' => qa_request_part( 0 ),
             );
 
-            $this->generate_breadcrumb_part( $args );
+            $this->generate_breadcrumb_element( $args );
 
             $args = array(
                 'url'  => qa_path_absolute( implode( array_slice( qa_request_parts(), 0, 2 ), '/' ) ),
@@ -436,7 +436,7 @@
                 'type' => $this->template,
             );
 
-            $this->generate_breadcrumb_part( $args, $is_last_elem );
+            $this->generate_breadcrumb_element( $args, $is_last_elem );
 
             return $args;
         }
@@ -454,7 +454,7 @@
                 'type' => $this->template,
             );
 
-            $this->generate_breadcrumb_part( $args, $is_last_elem );
+            $this->generate_breadcrumb_element( $args, $is_last_elem );
         }
 
         /**
@@ -481,7 +481,7 @@
                 'type' => $this->template,
             );
 
-            $this->generate_breadcrumb_part( $args, true );
+            $this->generate_breadcrumb_element( $args, true );
         }
 
         /**
@@ -507,7 +507,7 @@
                 'type' => $this->template,
             );
 
-            $this->generate_breadcrumb_part( $args, true );
+            $this->generate_breadcrumb_element( $args, true );
         }
 
         /**
@@ -525,7 +525,7 @@
                     'type' => $this->template,
                 );
 
-                $this->generate_breadcrumb_part( $args, true );
+                $this->generate_breadcrumb_element( $args, true );
             }
         }
 
@@ -542,7 +542,7 @@
                 'type' => $this->template,
             );
 
-            $this->generate_breadcrumb_part( $args, true );
+            $this->generate_breadcrumb_element( $args, true );
         }
 
         /**
@@ -581,7 +581,7 @@
                     'text' => $text,
                     'type' => $this->template,
                 );
-                $this->generate_breadcrumb_part( $args, true );
+                $this->generate_breadcrumb_element( $args, true );
             }
         }
 
@@ -610,7 +610,7 @@
                     'text' => $text,
                     'type' => $this->template,
                 );
-                $this->generate_breadcrumb_part( $args, true );
+                $this->generate_breadcrumb_element( $args, true );
             }
         }
 
@@ -640,7 +640,7 @@
                     'text' => $text,
                     'type' => $this->template,
                 );
-                $this->generate_breadcrumb_part( $args, true );
+                $this->generate_breadcrumb_element( $args, true );
             }
         }
     }
