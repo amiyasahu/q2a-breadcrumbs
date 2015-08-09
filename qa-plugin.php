@@ -29,8 +29,8 @@
         Plugin Name: Q2A Breadcrumbs
         Plugin URI: https://github.com/amiyasahu/q2a-breadcrumbs
         Plugin Description: Provides a basic widget for displaying breadcrumbs
-        Plugin Version: 1.2
-        Plugin Date: 2014-07-06
+        Plugin Version: 1.5
+        Plugin Date: 2015-08-09
         Plugin Author: Amiya Sahu
         Plugin Author URI: http://www.amiyasahu.com/
         Plugin License: GPLv2
