@@ -111,7 +111,7 @@
     }
 
 
-    if ( !function_exists( 'array_is_first_key' ) ) {
+    if ( !function_exists( 'is_array_first_key' ) ) {
         /**
          * Checks wheather the provided key is the first key of the array
          *
@@ -119,14 +119,14 @@
          * @param $key
          * @return bool
          */
-        function array_is_first_key( array $array, $key )
+        function is_array_first_key( array $array, $key )
         {
             return array_first_key( $array ) == $key;
         }
     }
 
 
-    if ( !function_exists( 'array_is_last_key' ) ) {
+    if ( !function_exists( 'is_array_last_key' ) ) {
         /**
          * Checks wheather the provided key is the first key of the array
          *
@@ -134,7 +134,7 @@
          * @param $key
          * @return bool
          */
-        function array_is_last_key( array $array, $key )
+        function is_array_last_key( array $array, $key )
         {
             return array_last_key( $array ) == $key;
         }

@@ -28,7 +28,7 @@
     /**
      * Class BreadCrumbOptions
      */
-    class BreadCrumbOptions
+    class Ami_BreadCrumbOptions
     {
         /**
          * @var
@@ -67,5 +67,5 @@
 
     function breadcrumb_opt( $key )
     {
-        return BreadCrumbOptions::getInstance()->getConfig( strtolower( $key ) );
+        return Ami_BreadCrumbOptions::getInstance()->getConfig( strtolower( $key ) );
     }
