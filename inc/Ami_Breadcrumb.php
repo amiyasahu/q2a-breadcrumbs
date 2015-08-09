@@ -57,7 +57,9 @@
             /*Now create the breadcrumb as per the template*/
 
             /**
+             * =====================================================
              * Now generate the breadcrumbs for the base level pages
+             * ======================================================
              */
             switch ( $this->template ) {
                 case 'not-found' :
@@ -201,7 +203,7 @@
          */
         private function generate_breadcrumb_part( $args, $is_last_element = false )
         {
-            $breadcrumb_part = new Ami_Ami_BreadcrumbPart( $args );
+            $breadcrumb_part = new Ami_Ami_BreadcrumbElement( $args );
 
             if ( $is_last_element ) {
                 $breadcrumb_part->is_last_elem = true;

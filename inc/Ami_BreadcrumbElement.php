@@ -26,7 +26,7 @@
 
     */
 
-    class Ami_Ami_BreadcrumbPart extends Ami_BreadcrumbModel
+    class Ami_Ami_BreadcrumbElement extends Ami_BreadcrumbModel
     {
         public function __construct( $params )
         {
