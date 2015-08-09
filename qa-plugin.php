@@ -52,7 +52,7 @@
     require_once AMI_BREADCRUMBS_DIR . '/qa-breadcrumbs-admin.php';
     require_once AMI_BREADCRUMBS_DIR . '/inc/Ami_BreadcrumbModel.php';
     require_once AMI_BREADCRUMBS_DIR . '/inc/Ami_BreadCrumbOptions.php';
-    require_once AMI_BREADCRUMBS_DIR . '/inc/Ami_BreadcrumbPart.php';
+    require_once AMI_BREADCRUMBS_DIR . '/inc/Ami_BreadcrumbElement.php';
     require_once AMI_BREADCRUMBS_DIR . '/inc/Ami_Breadcrumb.php';
 
     qa_register_plugin_layer( 'qa-breadcrumbs-layer.php', 'Breadcrumbs Layer' );
