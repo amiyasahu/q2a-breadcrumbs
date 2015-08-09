@@ -48,7 +48,7 @@
             if ( qa_clicked( self::SAVE_BUTTON ) ) {
                 qa_opt( self::SHOW_HOME, (bool) qa_post_text( self::SHOW_HOME ) );
                 qa_opt( self::NO_LINK_AT_LAST_ELEM, (bool) qa_post_text( self::NO_LINK_AT_LAST_ELEM ) );
-                qa_opt( self::TRUNCATE_LENGTH, qa_post_text( self::TRUNCATE_LENGTH ) );
+                qa_opt( self::TRUNCATE_LENGTH, (int) qa_post_text( self::TRUNCATE_LENGTH ) );
                 qa_opt( self::CUSTOM_CSS, qa_post_text( self::CUSTOM_CSS ) );
                 $saved = true;
             }

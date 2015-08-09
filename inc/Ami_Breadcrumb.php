@@ -251,16 +251,12 @@
             if ( count( $question_page ) ) {
 
                 $q_title = @$question_page['raw']['title'];
-                $trunc_len = breadcrumb_opt( q2a_breadcrumbs_admin::TRUNCATE_LENGTH );
-
-                if ( $trunc_len <= 0 ) {
-                    $trunc_len = strlen( $q_title );
-                }
+                $trunc_len = (int) breadcrumb_opt( q2a_breadcrumbs_admin::TRUNCATE_LENGTH );
 
                 $args = array(
                     'type' => 'question',
                     'url'  => qa_q_path( @$question_page['raw']['postid'], $q_title, true ),
-                    'text' => $this->truncate( $q_title, $trunc_len ),
+                    'text' => ( $trunc_len > 0 ) ? $this->truncate( $q_title, $trunc_len ) : $q_title,
                 );
                 $this->generate_breadcrumb_part( $args, true );
             }
