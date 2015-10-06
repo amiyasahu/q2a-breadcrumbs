@@ -30,3 +30,7 @@ About Question2Answer
 Question2Answer is a free and open source platform for Q&A sites. For more information, visit:
 
 http://www.question2answer.org/
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/amiyasahu/q2a-breadcrumbs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
