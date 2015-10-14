@@ -1,8 +1,6 @@
 #Question2Answer Breadcrumbs plugin#
 
-## About ##
-
-A q2a plugin which displays navigational breadcrumbs showing the path to the currently viewed page.
+A Question2Answer plugin which displays navigational breadcrumbs showing the path to the currently viewed page.
 
 ##What is a breadcrumb in websites##
 
