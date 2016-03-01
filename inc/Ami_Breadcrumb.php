@@ -384,14 +384,15 @@
         /**
          * ======================================
          * Generate Category element breadcrumb
-         * @param $category_details
+         *
+         * @param $category_detail
          * ======================================
          */
-        public function generate_category_breadcrumb( $category_details, $base_request = '', $is_last_elem = false )
+        public function generate_category_breadcrumb( $category_detail, $base_request = '', $is_last_elem = false )
         {
             $args = array(
-                'url'  => $this->category_path( $category_details['backpath'], $base_request ),
-                'text' => $category_details['title'],
+                'url'  => $this->category_path( $category_detail['backpath'], $base_request ),
+                'text' => $category_detail['title'],
                 'type' => $this->template,
             );
             $this->generate_breadcrumb_element( $args, $is_last_elem );
