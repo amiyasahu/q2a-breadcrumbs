@@ -121,11 +121,11 @@
                     $category_navs = qa_request_parts( $this->template == 'qa' ? 0 : 1 );
 
                     if ( count( $category_navs ) ) {
-                        foreach ( $category_navs as $index => $nav ) {
-                            //then it is showing categories
-                            $category_details = $this->get_category_details_from_tags( $nav );
-                            if ( count( $category_details ) ) {
-                                $this->generate_category_breadcrumb( $category_details, $this->template !== 'qa' ? ( qa_request_part( 0 ) . '/' ) : '', is_array_last_key( $category_navs, $index ) );
+                        $category_details = $this->get_category_details_from_tags( $category_navs );
+                        //Show all categories
+                        if(count($category_details)){
+                            foreach($category_details as $index => $category_detail){
+                                $this->generate_category_breadcrumb( $category_detail, $this->template !== 'qa' ? ( qa_request_part( 0 ) . '/' ) : '', is_array_last_key( $category_details, $index ) );
                             }
                         }
                     }
@@ -220,13 +220,25 @@
         /**
          * ==============================================
          * Returns the details about the category id specified
-         * @param $cat_id
+         *
+         * @param $cat_ids
+         *
          * @return array
          * ==============================================
          */
-        private function get_category_details( $cat_id )
+        private function get_category_details( $cat_ids )
         {
-            return ( qa_db_select_with_pending( qa_db_full_category_selectspec( $cat_id, true ) ) );
+            if(is_array($cat_ids))
+                $identifiersql = 'categoryid IN (#)';
+            else
+                $identifiersql = 'categoryid=#';
+
+            $result = qa_db_query_sub("SELECT categoryid, title, backpath FROM ^categories WHERE $identifiersql", $cat_ids);
+
+            if (!($result instanceof mysqli_result))
+                return null;
+
+            return qa_db_read_all_assoc($result, 'categoryid');
         }
 
         /**
@@ -288,7 +300,12 @@
          */
         function get_category_details_from_tags( $tags )
         {
-            return ( qa_db_select_with_pending( $this->db_category_selectspec( $tags ) ) );
+            $result = $this->db_category_select_sql( $tags ) ;
+
+            if (!($result instanceof mysqli_result))
+                return null;
+
+            return qa_db_read_all_assoc($result, 'categoryid');
         }
 
         /**
@@ -298,18 +315,14 @@
          * @return array
          * =================================================
          */
-        function db_category_selectspec( $tags )
+        function db_category_select_sql( $tags )
         {
+            if(is_array($tags) && count($tags) > 1)
+                $identifiersql = 'tags IN ($)';
+            else
+                $identifiersql = 'tags=$';
 
-            $identifiersql = 'tags=$';
-
-            return array(
-                'columns'   => array( 'categoryid', 'parentid', 'title', 'tags', 'qcount', 'content', 'backpath' ),
-                'source'    => '^categories WHERE ' . $identifiersql,
-                'arguments' => array( $tags ),
-                'single'    => 'true',
-            );
-
+            return qa_db_query_sub("SELECT categoryid, title, backpath FROM ^categories WHERE $identifiersql" , $tags);
         }
 
         /**
@@ -340,11 +353,12 @@
 
             if ( !empty( $cat ) ) {
                 $categoryids = @$this->content['categoryids'];
+
                 if ( count( $categoryids ) ) {
-                    foreach ( $categoryids as $categoryid ) {
-                        $category_details = $this->get_category_details( $categoryid );
-                        if ( count( $category_details ) ) {
-                            $this->generate_category_breadcrumb( $category_details );
+                    $category_details = $this->get_category_details( $categoryids );
+                    if ( count( $category_details ) ) {
+                        foreach ( $category_details as $category_detail ) {
+                            $this->generate_category_breadcrumb( $category_detail );
                         }
                     }
                 }
