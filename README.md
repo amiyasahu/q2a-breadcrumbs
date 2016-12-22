@@ -6,7 +6,7 @@ A Question2Answer plugin which displays navigational breadcrumbs showing the pat
 
 A `breadcrumb` is a type of secondary navigation scheme that reveals the user’s location in a website or Web application.
 
-![Screenshot](/blob/gh-pages/breadcrumb-preview.png?raw=true "Breadcrumb screenshot")
+![Screenshot](https://github.com/amiyasahu/q2a-breadcrumbs/blob/gh-pages/breadcrumb-preview.png?raw=true "Breadcrumb screenshot")
 
 ## Why it is needed ?
 
