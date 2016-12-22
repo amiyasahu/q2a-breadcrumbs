@@ -20,8 +20,8 @@ Also it adds content relevancy to your pages and adds on-page SEO emphasis that 
 
 ## Installation
 
-* Install [Question2Answer][]. This plugin requires at least version 1.6 (see the change log for details)
-* Get the source code for this plugin from [Github][], either using [Git][], or downloading directly:
+1. Install [Question2Answer][]. This plugin requires at least version 1.6 (see the change log for details)
+2. Get the source code for this plugin from [Github][], either using [Git][], or downloading directly:
 
    - To download using git, install git and then type 
       
@@ -29,10 +29,10 @@ Also it adds content relevancy to your pages and adds on-page SEO emphasis that 
       
    - To download directly, go to the [latest release][latest release] and click **Download ZIP**
 
-* Copy the plugin folder to `qa-plugin` directory
-* Login into your website and visit the Admin -> Plugins section 
-* Click on `options` link under `Q2A Breadcrumbs` section for configuration
-* Visit Admin -> Layout , Add the Breadcrumbs widget in your desired location .
+3. Copy the plugin folder to `qa-plugin` directory
+4. Login into your website and visit the Admin -> Plugins section 
+5. Click on `options` link under `Q2A Breadcrumbs` section for configuration
+6. Visit Admin -> Layout , Add the Breadcrumbs widget in your desired location .
 
 ## License
 This program is free software; you can redistribute it and/or modify it under the terms of the [GNU General Public License](https://github.com/amiyasahu/q2a-breadcrumbs/blob/master/LICENSE) as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
