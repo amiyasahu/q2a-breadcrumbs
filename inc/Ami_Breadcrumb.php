@@ -183,10 +183,9 @@
         }
 
         /**
-         * ==============================================
          * Generate the breadcrumb for the home page
+         * 
          * @return array
-         * ==============================================
          */
         public function generate_home_breadcrumb()
         {
@@ -202,10 +201,9 @@
         }
 
         /**
-         * ==============================================
          * Create the breadcrumb part object and shows on the browser
+         * 
          * @param $args
-         * ==============================================
          */
         public function generate_breadcrumb_element( $args, $is_last_element = false )
         {
@@ -219,13 +217,11 @@
         }
 
         /**
-         * ==============================================
          * Returns the details about the category id specified
          *
          * @param $cat_ids
          *
          * @return array
-         * ==============================================
          */
         private function get_category_details( $cat_ids )
         {
@@ -243,12 +239,11 @@
         }
 
         /**
-         * ==============================================
          * Returns the link of the categoty
+         * 
          * @param $categorybackpath
          * @param string $request
          * @return string
-         * ==============================================
          */
         private function category_path( $categorybackpath, $request = '' )
         {
@@ -256,13 +251,12 @@
         }
 
         /**
-         * ==============================================
          * Truncate the String to a certain length
+         * 
          * @param $str
          * @param $len
          * @param string $append
          * @return string
-         * ==============================================
          */
         public function truncate( $str, $len, $append = '...' )
         {
@@ -282,10 +276,9 @@
         }
 
         /**
-         * =================================================
          * Check if the current page is home page or not
+         * 
          * @return bool
-         * =================================================
          */
         public function is_home()
         {
@@ -293,11 +286,10 @@
         }
 
         /**
-         * =================================================
          * Returns the category details using the slug
+         * 
          * @param $tags
          * @return array
-         * =================================================
          */
         function get_category_details_from_tags( $tags )
         {
@@ -310,11 +302,10 @@
         }
 
         /**
-         * =================================================
          * Returns the select specification
+         * 
          * @param $tags
          * @return array
-         * =================================================
          */
         function db_category_select_sql( $tags )
         {
@@ -327,9 +318,7 @@
         }
 
         /**
-         * ================================================
          * Genarate Page Not found breadcrumb
-         * ================================================
          */
         public function generate_page_not_found_breadcrumb()
         {
@@ -343,9 +332,7 @@
 
 
         /**
-         * ===============================================
          * Generate Question page breadcrumb
-         * ===============================================
          */
         public function generate_question_page_breadcrumb()
         {
@@ -383,11 +370,9 @@
         }
 
         /**
-         * ======================================
          * Generate Category element breadcrumb
          *
          * @param $category_detail
-         * ======================================
          */
         public function generate_category_breadcrumb( $category_detail, $base_request = '', $is_last_elem = false )
         {
@@ -400,9 +385,7 @@
         }
 
         /**
-         * =================================================
          * Generate the question element breadcrumb
-         * =================================================
          */
         public function generate_question_breadcrumb()
         {
@@ -415,9 +398,7 @@
         }
 
         /**
-         * =================================================
          * Generate breadcrumbs for the search page
-         * =================================================
          */
         public function generate_search_page_breadcrumb()
         {
@@ -431,10 +412,9 @@
         }
 
         /**
-         * =================================================
          * Generate the breadcrumbs for the tag and the user page
+         * 
          * @param bool|false $is_last_elem
-         * =================================================
          */
         public function generate_tag_and_user_breadcrumb( $is_last_elem = false )
         {
@@ -458,9 +438,7 @@
         }
 
         /**
-         * =================================================
          * Generate breadcrumbs for the common pages
-         * =================================================
          */
         public function generate_common_page_breadcrumb( $is_last_elem = false )
         {
@@ -474,9 +452,7 @@
         }
 
         /**
-         * ==================================================
          *  Generate breadcrumb for the users page
-         * ==================================================
          */
         public function generate_users_page_breadcrumb()
         {
@@ -501,9 +477,7 @@
         }
 
         /**
-         * ==================================================
          * Generate breadcrumb for the messages sub-page
-         * ==================================================
          */
         public function generate_messages_page_breadcrumb()
         {
@@ -527,9 +501,7 @@
         }
 
         /**
-         * ==================================================
          * Generate breadcrumbs for the PM page
-         * ==================================================
          */
         public function generate_messge_pages_breadcrumb()
         {
@@ -546,9 +518,7 @@
         }
 
         /**
-         * ==================================================
          * Genetate breadcrumbs for the user specific pages like user-answers , user-wall etc.
-         * ==================================================
          */
         public function generate_user_specific_pages_breadcrumb()
         {
@@ -562,9 +532,7 @@
         }
 
         /**
-         * ==================================================
          *  Genarate breadcrumbs for the questions page subnavigations
-         * ==================================================
          */
         public function generate_question_sorting_breadcrumb()
         {
@@ -602,9 +570,7 @@
         }
 
         /**
-         * ==================================================
          * Genarates the breadcrumb for unanswered page sub navigations
-         * ==================================================
          */
         public function generate_unanswered_sort_breadcrumbs()
         {
@@ -631,9 +597,7 @@
         }
 
         /**
-         * ==================================================
          * Generates breadcrumb for the updates page sub navigations
-         * ==================================================
          */
         public function generate_sub_update_page_breadcrumbs()
         {
