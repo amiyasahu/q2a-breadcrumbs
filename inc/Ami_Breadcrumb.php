@@ -54,9 +54,11 @@
 
             $this->generate_home_breadcrumb();
 
-            /*Now create the breadcrumb as per the template*/
+            /* 
+             * Now create the breadcrumb as per the template
+             */
 
-            /**
+            /*
              * =====================================================
              * Now generate the breadcrumbs for the base level pages
              * ======================================================
@@ -104,7 +106,7 @@
 
             }
 
-            /**
+            /*
              * #############################################
              * Now Generate the breadcrumb of the sub pages
              * #############################################
@@ -158,7 +160,7 @@
                     break;
             }
 
-            /**
+            /*
              * ##########################################################################
              * Now Generate the breadcrumb of the pages meant for sorting and other pages
              * ###########################################################################
