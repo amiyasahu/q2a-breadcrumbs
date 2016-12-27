@@ -4,7 +4,7 @@ A Question2Answer plugin which displays navigational breadcrumbs showing the pat
 
 ## What is a breadcrumb in websites
 
-A `breadcrumb` is a type of secondary navigation scheme that reveals the user’s location in a website or Web application.
+A **breadcrumb** is a type of secondary navigation scheme that reveals the user’s location in a website or Web application.
 
 ![Screenshot](https://github.com/amiyasahu/q2a-breadcrumbs/blob/gh-pages/breadcrumb-preview.png?raw=true "Breadcrumb screenshot")
 
