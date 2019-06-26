@@ -54,9 +54,11 @@
 
             $this->generate_home_breadcrumb();
 
-            /*Now create the breadcrumb as per the template*/
+            /* 
+             * Now create the breadcrumb as per the template
+             */
 
-            /**
+            /*
              * =====================================================
              * Now generate the breadcrumbs for the base level pages
              * ======================================================
@@ -92,6 +94,7 @@
                 case 'message' :
                 case 'favorites' :
                 case 'answers' :
+                case 'hot' :
 
                     $is_last_elem = false;
                     if ( !in_array( $this->template, array( 'users', 'questions', 'unanswered' ) ) && ( count( qa_request_parts() ) <= 1 ) ) {
@@ -103,7 +106,7 @@
 
             }
 
-            /**
+            /*
              * #############################################
              * Now Generate the breadcrumb of the sub pages
              * #############################################
@@ -121,11 +124,11 @@
                     $category_navs = qa_request_parts( $this->template == 'qa' ? 0 : 1 );
 
                     if ( count( $category_navs ) ) {
-                        foreach ( $category_navs as $index => $nav ) {
-                            //then it is showing categories
-                            $category_details = $this->get_category_details_from_tags( $nav );
-                            if ( count( $category_details ) ) {
-                                $this->generate_category_breadcrumb( $category_details, $this->template !== 'qa' ? ( qa_request_part( 0 ) . '/' ) : '', is_array_last_key( $category_navs, $index ) );
+                        $category_details = $this->get_category_details_from_tags( $category_navs );
+                        //Show all categories
+                        if(count($category_details)){
+                            foreach($category_details as $index => $category_detail){
+                                $this->generate_category_breadcrumb( $category_detail, $this->template !== 'qa' ? ( qa_request_part( 0 ) . '/' ) : '', is_array_last_key( $category_details, $index ) );
                             }
                         }
                     }
@@ -157,7 +160,7 @@
                     break;
             }
 
-            /**
+            /*
              * ##########################################################################
              * Now Generate the breadcrumb of the pages meant for sorting and other pages
              * ###########################################################################
@@ -182,10 +185,9 @@
         }
 
         /**
-         * ==============================================
          * Generate the breadcrumb for the home page
+         * 
          * @return array
-         * ==============================================
          */
         public function generate_home_breadcrumb()
         {
@@ -201,10 +203,9 @@
         }
 
         /**
-         * ==============================================
          * Create the breadcrumb part object and shows on the browser
+         * 
          * @param $args
-         * ==============================================
          */
         public function generate_breadcrumb_element( $args, $is_last_element = false )
         {
@@ -218,24 +219,33 @@
         }
 
         /**
-         * ==============================================
          * Returns the details about the category id specified
-         * @param $cat_id
+         *
+         * @param $cat_ids
+         *
          * @return array
-         * ==============================================
          */
-        private function get_category_details( $cat_id )
+        private function get_category_details( $cat_ids )
         {
-            return ( qa_db_select_with_pending( qa_db_full_category_selectspec( $cat_id, true ) ) );
+            if(is_array($cat_ids))
+                $identifiersql = 'categoryid IN (#)';
+            else
+                $identifiersql = 'categoryid=#';
+
+            $result = qa_db_query_sub("SELECT categoryid, title, backpath FROM ^categories WHERE $identifiersql", $cat_ids);
+
+            if (!($result instanceof mysqli_result))
+                return null;
+
+            return qa_db_read_all_assoc($result, 'categoryid');
         }
 
         /**
-         * ==============================================
          * Returns the link of the categoty
+         * 
          * @param $categorybackpath
          * @param string $request
          * @return string
-         * ==============================================
          */
         private function category_path( $categorybackpath, $request = '' )
         {
@@ -243,13 +253,12 @@
         }
 
         /**
-         * ==============================================
          * Truncate the String to a certain length
+         * 
          * @param $str
          * @param $len
          * @param string $append
          * @return string
-         * ==============================================
          */
         public function truncate( $str, $len, $append = '...' )
         {
@@ -269,10 +278,9 @@
         }
 
         /**
-         * =================================================
          * Check if the current page is home page or not
+         * 
          * @return bool
-         * =================================================
          */
         public function is_home()
         {
@@ -280,42 +288,39 @@
         }
 
         /**
-         * =================================================
          * Returns the category details using the slug
+         * 
          * @param $tags
          * @return array
-         * =================================================
          */
         function get_category_details_from_tags( $tags )
         {
-            return ( qa_db_select_with_pending( $this->db_category_selectspec( $tags ) ) );
+            $result = $this->db_category_select_sql( $tags ) ;
+
+            if (!($result instanceof mysqli_result))
+                return null;
+
+            return qa_db_read_all_assoc($result, 'categoryid');
         }
 
         /**
-         * =================================================
          * Returns the select specification
+         * 
          * @param $tags
          * @return array
-         * =================================================
          */
-        function db_category_selectspec( $tags )
+        function db_category_select_sql( $tags )
         {
+            if(is_array($tags) && count($tags) > 1)
+                $identifiersql = 'tags IN ($)';
+            else
+                $identifiersql = 'tags=$';
 
-            $identifiersql = 'tags=$';
-
-            return array(
-                'columns'   => array( 'categoryid', 'parentid', 'title', 'tags', 'qcount', 'content', 'backpath' ),
-                'source'    => '^categories WHERE ' . $identifiersql,
-                'arguments' => array( $tags ),
-                'single'    => 'true',
-            );
-
+            return qa_db_query_sub("SELECT categoryid, title, backpath FROM ^categories WHERE $identifiersql" , $tags);
         }
 
         /**
-         * ================================================
          * Genarate Page Not found breadcrumb
-         * ================================================
          */
         public function generate_page_not_found_breadcrumb()
         {
@@ -329,9 +334,7 @@
 
 
         /**
-         * ===============================================
          * Generate Question page breadcrumb
-         * ===============================================
          */
         public function generate_question_page_breadcrumb()
         {
@@ -340,11 +343,12 @@
 
             if ( !empty( $cat ) ) {
                 $categoryids = @$this->content['categoryids'];
+
                 if ( count( $categoryids ) ) {
-                    foreach ( $categoryids as $categoryid ) {
-                        $category_details = $this->get_category_details( $categoryid );
-                        if ( count( $category_details ) ) {
-                            $this->generate_category_breadcrumb( $category_details );
+                    $category_details = $this->get_category_details( $categoryids );
+                    if ( count( $category_details ) ) {
+                        foreach ( $category_details as $category_detail ) {
+                            $this->generate_category_breadcrumb( $category_detail );
                         }
                     }
                 }
@@ -368,25 +372,22 @@
         }
 
         /**
-         * ======================================
          * Generate Category element breadcrumb
-         * @param $category_details
-         * ======================================
+         *
+         * @param $category_detail
          */
-        public function generate_category_breadcrumb( $category_details, $base_request = '', $is_last_elem = false )
+        public function generate_category_breadcrumb( $category_detail, $base_request = '', $is_last_elem = false )
         {
             $args = array(
-                'url'  => $this->category_path( $category_details['backpath'], $base_request ),
-                'text' => $category_details['title'],
+                'url'  => $this->category_path( $category_detail['backpath'], $base_request ),
+                'text' => $category_detail['title'],
                 'type' => $this->template,
             );
             $this->generate_breadcrumb_element( $args, $is_last_elem );
         }
 
         /**
-         * =================================================
          * Generate the question element breadcrumb
-         * =================================================
          */
         public function generate_question_breadcrumb()
         {
@@ -399,9 +400,7 @@
         }
 
         /**
-         * =================================================
          * Generate breadcrumbs for the search page
-         * =================================================
          */
         public function generate_search_page_breadcrumb()
         {
@@ -415,10 +414,9 @@
         }
 
         /**
-         * =================================================
          * Generate the breadcrumbs for the tag and the user page
+         * 
          * @param bool|false $is_last_elem
-         * =================================================
          */
         public function generate_tag_and_user_breadcrumb( $is_last_elem = false )
         {
@@ -442,9 +440,7 @@
         }
 
         /**
-         * =================================================
          * Generate breadcrumbs for the common pages
-         * =================================================
          */
         public function generate_common_page_breadcrumb( $is_last_elem = false )
         {
@@ -458,9 +454,7 @@
         }
 
         /**
-         * ==================================================
          *  Generate breadcrumb for the users page
-         * ==================================================
          */
         public function generate_users_page_breadcrumb()
         {
@@ -485,9 +479,7 @@
         }
 
         /**
-         * ==================================================
          * Generate breadcrumb for the messages sub-page
-         * ==================================================
          */
         public function generate_messages_page_breadcrumb()
         {
@@ -511,9 +503,7 @@
         }
 
         /**
-         * ==================================================
          * Generate breadcrumbs for the PM page
-         * ==================================================
          */
         public function generate_messge_pages_breadcrumb()
         {
@@ -530,9 +520,7 @@
         }
 
         /**
-         * ==================================================
          * Genetate breadcrumbs for the user specific pages like user-answers , user-wall etc.
-         * ==================================================
          */
         public function generate_user_specific_pages_breadcrumb()
         {
@@ -546,9 +534,7 @@
         }
 
         /**
-         * ==================================================
          *  Genarate breadcrumbs for the questions page subnavigations
-         * ==================================================
          */
         public function generate_question_sorting_breadcrumb()
         {
@@ -586,9 +572,7 @@
         }
 
         /**
-         * ==================================================
          * Genarates the breadcrumb for unanswered page sub navigations
-         * ==================================================
          */
         public function generate_unanswered_sort_breadcrumbs()
         {
@@ -615,9 +599,7 @@
         }
 
         /**
-         * ==================================================
          * Generates breadcrumb for the updates page sub navigations
-         * ==================================================
          */
         public function generate_sub_update_page_breadcrumbs()
         {

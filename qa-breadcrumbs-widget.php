@@ -66,7 +66,7 @@
             $themeobject->output('<div class="breadcrumb-wrapper">');
             $breadcrumb = new Ami_Breadcrumb( $args );
             $breadcrumb->generate();
-            $themeobject->output('</div">');
+            $themeobject->output('</div>');
         }
     }
 

@@ -24,7 +24,7 @@
 
       More about this license: http://www.question2answer.org/license.php
 
-*/
+    */
 
     class Ami_BreadcrumbModel
     {
@@ -123,6 +123,12 @@
             return array_key_exists( $key, $this->_data );
         }
 
+        /**
+         * Copy the elements of the model object from another model object 
+         * 
+         * @param  array  $data 
+         * @return null
+         */
         public function copy_from( array $data )
         {
             foreach ( $data as $key => $value ) {
@@ -132,6 +138,11 @@
             }
         }
 
+        /**
+         * Clear all the values from the model 
+         * 
+         * @return null
+         */
         public function clear()
         {
             foreach ( $this->_data as $key => $value ) {
@@ -143,6 +154,11 @@
             }
         }
 
+        /**
+         * Adds an error message to the model 
+         * 
+         * @param  $error_message [description]
+         */
         public function add_error( $error_message )
         {
             if ( !empty( $error_message ) ) {
@@ -150,16 +166,31 @@
             }
         }
 
+        /**
+         * clears all the errors from the model 
+         * 
+         * @return null
+         */
         public function clear_errors()
         {
             $this->_errors = array();
         }
 
+        /**
+         * Returns all the errors 
+         * 
+         * @return [type] [description]
+         */
         public function get_errors()
         {
             return $this->_errors;
         }
 
+        /**
+         * Returns all the errors concatenated with a $glue 
+         * @param  string $glue the delimiter 
+         * @return string       all the error messages
+         */
         public function get_error_lines( $glue = "\n" )
         {
             $error_lines = '';
@@ -170,6 +201,11 @@
             return $error_lines;
         }
 
+        /**
+         * Checks if the model is a valid one. The model is considered as a valid if it does not contain any error 
+         * 
+         * @return boolean true|false 
+         */
         public function is_valid()
         {
             return count( $this->_errors ) == 0;

@@ -53,22 +53,33 @@
             qa_html_theme_base::head_css();
             if ( $this->template != 'admin' ) {
                 $breadcrumb_css_url = $this->get_css_file_for_theme( qa_opt( 'site_theme' ), qa_path_to_root() . 'qa-plugin/' . AMI_BREADCRUMBS_FOLDER . '/css/' );
-                //$breadcrumb_css_url = qa_path_to_root() . 'qa-plugin/' . AMI_BREADCRUMBS_FOLDER . '/css/breadcrumbs-styles.css';
                 $this->output( '<link rel="stylesheet" TYPE="text/css" href="' . $breadcrumb_css_url . '"/>' );
             }
         }
 
+        /**
+         * Returns theme specific CSS file 
+         * 
+         * @param  string $theme_name   current theme name
+         * @param  string $css_base_dir base directory
+         * @return string               theme specific CSS file 
+         */
         private function get_css_file_for_theme( $theme_name, $css_base_dir = null )
         {
             $mapper = $this->css_files_mapper();
 
             $css_file = array_key_exists( strtolower( $theme_name ), $mapper )
-                ? $mapper[ strtolower( $theme_name ) ]
-                : $mapper['default'];
+                            ? $mapper[ strtolower( $theme_name ) ]
+                            : $mapper['default'];
 
-            return !is_null( $css_base_dir ) ? $css_base_dir . $css_file : $css_file;
+            return is_null( $css_base_dir ) ? $css_file : $css_base_dir . $css_file ;
         }
 
+        /**
+         * Maps between the theme and CSS file 
+         * 
+         * @return array map of theme name as a key and the css file as a value 
+         */
         private function css_files_mapper()
         {
             return array(
