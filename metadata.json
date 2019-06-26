@@ -2,12 +2,13 @@
   "name": "Q2A Breadcrumbs",
   "uri": "https://github.com/amiyasahu/q2a-breadcrumbs",
   "description": "Provides a basic widget for displaying breadcrumbs",
-  "version": "1.5.2",
-  "date": "2016-03-01",
+  "version": "1.5.3",
+  "date": "2019-06-25",
   "author": "Amiya Sahu",
-  "author_uri": "http://www.amiyasahu.com/",
+  "author_uri": "http://www.amiyasahu.github.io/",
   "license": "GPLv3",
   "update_uri": "https://raw.githubusercontent.com/amiyasahu/q2a-breadcrumbs/master/metadata.json",
   "min_q2a": "1.6",
-  "min_php": "5.1.6"
+  "min_php": "5.1.6",
+  "load_order": "after_db_init"
 }
