@@ -68,7 +68,7 @@
             return strtr( $breadcrumb_structure, array(
                 '{{class}}' => $this->class,
                 '{{url}}'   => $this->url,
-                '{{text}}'  => $this->text,
+                '{{text}}'  => qa_html( $this->text ),
             ) );
         }
 

@@ -342,18 +342,10 @@
             $cat = @$question_page['where'];
 
             if ( !empty( $cat ) ) {
-                $categoryids = @$this->content['categoryids'];
-
-                if ( count( $categoryids ) ) {
-                    $category_details = $this->get_category_details( $categoryids );
-                    if ( count( $category_details ) ) {
-                        foreach ( $category_details as $category_detail ) {
-                            $this->generate_category_breadcrumb( $category_detail );
-                        }
-                    }
-                }
+                // question is asked under a category
+                $this->generate_categories_breadcrumb_question_page();
             } else {
-                //if question is asked with out any categories
+                // question is asked with out any categories
                 $this->generate_question_breadcrumb();
             }
 
@@ -368,6 +360,31 @@
                     'text' => ( $trunc_len > 0 ) ? $this->truncate( $q_title, $trunc_len ) : $q_title,
                 );
                 $this->generate_breadcrumb_element( $args, true );
+            }
+        }
+
+        /**
+         * Generate the categories breadcrumb for the question page
+         */
+        public function generate_categories_breadcrumb_question_page(){
+            $categoryids = @$this->content['categoryids'];
+            if ( !count( $categoryids ) ) {
+                return;
+            }
+
+            $category_details = $this->get_category_details( $categoryids );
+            if ( !count( $category_details ) ) {
+                return;
+            }
+
+            // need to re-order the $category_details that we received from database
+            $ordered_category_details = array();
+            foreach($categoryids as $categoryid){
+                $ordered_category_details[$categoryid] = $category_details[$categoryid];
+            }
+            
+            foreach ( $ordered_category_details as $category_detail ) {
+                $this->generate_category_breadcrumb( $category_detail );
             }
         }
 
