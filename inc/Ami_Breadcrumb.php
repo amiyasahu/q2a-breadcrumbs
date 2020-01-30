@@ -50,7 +50,7 @@
 
         public function generate()
         {
-            $this->themeobject->output( '<ul class="breadcrumb clearfix">' );
+            $this->themeobject->output( '<ul class="breadcrumb clearfix" itemscope itemtype="http://schema.org/BreadcrumbList">' );
 
             $this->generate_home_breadcrumb();
 
