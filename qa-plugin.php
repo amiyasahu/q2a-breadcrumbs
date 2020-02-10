@@ -47,7 +47,7 @@
     define( 'AMI_BREADCRUMBS_DIR', dirname( __FILE__ ) );
     define( 'AMI_BREADCRUMBS_FOLDER', basename( dirname( __FILE__ ) ) );
 
-    require_once QA_INCLUDE_DIR . "/qa-db-selects.php";
+    require_once QA_INCLUDE_DIR . 'db/selects.php';
     require_once AMI_BREADCRUMBS_DIR . "/qa-breadcrumbs-utils.php";
     require_once AMI_BREADCRUMBS_DIR . '/qa-breadcrumbs-admin.php';
     require_once AMI_BREADCRUMBS_DIR . '/inc/Ami_BreadcrumbModel.php';
